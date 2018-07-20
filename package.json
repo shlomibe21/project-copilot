@@ -1,0 +1,28 @@
+{
+  "name": "project-hub",
+  "version": "1.0.0",
+  "description": "A mobile and desktop application to help freelancers to manage all their projects in one place.",
+  "main": "server.js",
+  "dependencies": {
+    "express": "^4.16.3"
+  },
+  "devDependencies": {
+    "chai": "^4.1.2",
+    "chai-http": "^4.0.0",
+    "mocha": "^5.2.0"
+  },
+  "scripts": {
+    "test": "mocha --exit",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/shlomibe21/project-hub.git"
+  },
+  "author": "Shlomi Benshlomo",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/shlomibe21/project-hub/issues"
+  },
+  "homepage": "https://github.com/shlomibe21/project-hub#readme"
+}
