@@ -4,6 +4,27 @@ const express = require('express');
 const app = express();
 app.use(express.static('public'));
 
+const bodyParser = require('body-parser');
+
+app.get("/project-create", (req, res) => {
+  return res.json('hello create');
+});
+
+app.get("/project-delete", (req, res) => {
+  return res.json('hello delete');
+});
+
+app.get("/project-edit", (req, res) => {
+  return res.json('hello edit');
+});
+
+app.get("/project-view", (req, res) => {
+  return res.json('hello view');
+});
+
+app.get("/projects-list", (req, res) => {
+  return res.json('hello projects');
+});
 // this function connects to our database, then starts the server
 /*function runServer(databaseUrl, port = PORT) {
 

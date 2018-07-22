@@ -1,9 +1,10 @@
 {
-  "name": "project-hub",
+  "name": "project-copilot",
   "version": "1.0.0",
   "description": "A mobile and desktop application to help freelancers to manage all their projects in one place.",
   "main": "server.js",
   "dependencies": {
+    "body-parser": "^1.18.3",
     "express": "^4.16.3"
   },
   "devDependencies": {
@@ -17,12 +18,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/shlomibe21/project-hub.git"
+    "url": "git+https://github.com/shlomibe21/project-copilot.git"
   },
   "author": "Shlomi Benshlomo",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/shlomibe21/project-hub/issues"
+    "url": "https://github.com/shlomibe21/project-copilot/issues"
   },
-  "homepage": "https://github.com/shlomibe21/project-hub#readme"
+  "homepage": "https://github.com/shlomibe21/project-copilot#readme"
 }
