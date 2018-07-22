@@ -11,7 +11,7 @@ const expect = chai.expect;
 
 chai.use(chaiHttp);
 
-describe("Project Hub", function () {
+describe("Project Copilot", function () {
     /*before(function () {
         return runServer();
     });

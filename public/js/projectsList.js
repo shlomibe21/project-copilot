@@ -109,4 +109,8 @@ function displayProjectsList() {
     getProjectsList(displayProjects);
 }
 
+function handleProjectsList() {
+    displayProjectsList();
+}
+
 $(displayProjectsList);
