@@ -1,5 +1,3 @@
-'use strict';
-
 const MOCK_PROJECTS_LIST = {
     "projectsList": [
         {
@@ -84,33 +82,3 @@ const MOCK_PROJECTS_LIST = {
         }
     ]
 };
-
-function getProjectsList(callbackFn) {
-    setTimeout(function(){ callbackFn(MOCK_PROJECTS_LIST)}, 100);
-}
-
-// Note: this function can stay the same when we connect
-// to real API later
-function displayProjects(data) {
-    for (let listItem in data.projectsList) {
-        let item = data.projectsList[listItem];
-       	$('body').append(
-        '<p>' + item.companyName + '</p>');
-		for (let item1 in item.tasks) {
-       		$('body').append(
-        	'<p>' + item.tasks[item1].description + '</p>');
-    	}
-    }
-}
-
-// Note: this function can stay the same when we
-// connect to real API later
-function displayProjectsList() {
-    getProjectsList(displayProjects);
-}
-
-function handleProjectsList() {
-    displayProjectsList();
-}
-
-$(displayProjectsList);

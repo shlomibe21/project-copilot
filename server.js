@@ -14,11 +14,11 @@ app.get("/project-delete", (req, res) => {
   return res.json('hello delete');
 });
 
-app.get("/project-edit", (req, res) => {
+app.get("/project-update", (req, res) => {
   return res.json('hello edit');
 });
 
-app.get("/project-view", (req, res) => {
+app.get("/project-read", (req, res) => {
   return res.json('hello view');
 });
 
