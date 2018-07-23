@@ -50,7 +50,7 @@ describe("Project Copilot", function () {
     it("Should get 200 code on project-edit", function () {
         return chai
             .request(app)
-            .get("/project-edit")
+            .get("/project-update")
             .then(function (res) {
                 expect(res).to.have.status(200);
             });
@@ -59,7 +59,7 @@ describe("Project Copilot", function () {
     it("Should get 200 code on project-view", function () {
         return chai
             .request(app)
-            .get("/project-view")
+            .get("/project-read")
             .then(function (res) {
                 expect(res).to.have.status(200);
             });
