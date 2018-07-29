@@ -2,7 +2,21 @@
     box-sizing: border-box;
   }
 
+ul {
+	list-style: none;
+	padding: 0;
+}
+
  .js-project-info p {
-      display: inline-block;
-      color: red;
+    display: inline-block;
+    color: red;
   }
+
+  .centered-content {
+	width: 80%;
+    margin-left: auto;
+    margin-right: auto;  
+	padding-left: 20px;
+	padding-right: 20px;
+    border: solid 1px;
+}
