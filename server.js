@@ -15,6 +15,7 @@ const app = express();
 
 const { router: usersRouter } = require('./users');
 const { router: projectsRouter } = require('./projects');
+const bodyParser = require('body-parser');
 
 app.use(express.static('public'));
 app.use(morgan('common'));
@@ -27,8 +28,6 @@ app.use(bodyParser.json());
 
 app.use('/api/users/', usersRouter);
 app.use('/api/projects/', projectsRouter);
-
-
 
 
 // catch-all endpoint if client makes request to non-existent endpoint
