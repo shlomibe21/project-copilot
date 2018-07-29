@@ -1,32 +1,79 @@
 'use strict';
 
+// Get projects list
 function getProjectsList(callbackFn) {
-    setTimeout(function () { callbackFn(MOCK_PROJECTS_LIST) }, 100);
+    $.ajax({
+        url: "/api/projects/projects-list",
+        type: 'GET',
+        contentType: 'application/json',
+        success: callbackFn,
+        error: function (error) {
+            console.log('error', error);
+        },
+    });
 }
 
-// Note: this function can stay the same when we connect
-// to real API later
+function renderProject(item) {
+    // Build header template
+    let headerInfo = projectHeaderReadTemplate(item);
+    let tasksInfo;
+    if (item.tasks) {
+        // Build tasks template
+        tasksInfo = item.tasks.map((task) => projectTasksReadTemplate(task));
+    }
+    let template = `
+    <li>
+    <div class="centered-content js-tasks" data-id="${item.id}">
+    ${headerInfo}${tasksInfo.join("")}
+    <button class="edit-task-button">Edit</button>
+    <button class="delete-task-button">Delete</button>
+    </div>
+    </li>
+    `;
+    return template;
+}
+
 function displayProjects(data) {
-    for (let listItem in data.projectsList) {
-        let item = data.projectsList[listItem];
-        console.log(item);
-        // Display header info
-        let headerInfo = projectHeaderReadTemplate(item)
-        $('.js-project-info').append(headerInfo);
-        // Display tasks info
-        let tasksInfo = item.tasks.map((task) => projectTasksReadTemplate(task));
-        $('.js-project-info').append(tasksInfo);
+    for (let listItem in data.projects) {
+        let item = data.projects[listItem];
+        let project = renderProject(item);
+        $('.js-project-info').append(project);
     }
 }
 
-// Note: this function can stay the same when we
-// connect to real API later
 function displayProjectsList() {
     getProjectsList(displayProjects);
 }
 
+function displayProjectClick() {
+    /*$('.js-project-info').on('click', '.js-tasks', function (event) {
+        let id = $(event.currentTarget).find("input[name*='id']").val();
+        //console.log(id);
+        window.location.href = "project-read.html?id=" + id;
+    });*/
+}
+
+function editProjectClick() {
+    $('.js-project-info').on('click', '.edit-task-button', function (event) {
+        let id = $(event.currentTarget).parent().find("input[name*='id']").val();
+        //console.log(id);
+        window.location.href = "project-update.html?id=" + id;
+    });
+}
+
+function deleteProjectClick() {
+    $('.js-project-info').on('click', '.delete-task-button', function (event) {
+        let id = $(event.currentTarget).parent().find("input[name*='id']").val();
+        //console.log(id);
+        window.location.href = "project-delete.html?id=" + id;
+    });
+}
+
 function handleProjectsList() {
     displayProjectsList();
+    displayProjectClick();
+    editProjectClick();
+    deleteProjectClick();
 }
 
 $(handleProjectsList);

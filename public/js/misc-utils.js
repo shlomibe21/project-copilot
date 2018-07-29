@@ -1,13 +1,13 @@
 'use strict';
 
 function getParamValFromUrl(url, key) {
-    var queryStr = url.slice(1);
+    let queryStr = url.slice(1);
     if(!queryStr) {
         return;
     }
-	var vars = queryStr.split('&');
-	for (var i = 0; i < vars.length; i++) {
-        var pair = vars[i].split('=');
+	let params = queryStr.split('&');
+	for (let i = 0; i < params.length; i++) {
+        let pair = params[i].split('=');
         if(pair[0] === key) {
             return pair[1];
         }
