@@ -17,6 +17,9 @@ const { router: usersRouter } = require('./users');
 const { router: projectsRouter } = require('./projects');
 
 app.use(express.static('public'));
+app.use(morgan('common'));
+app.use(bodyParser.json());
+
 //app.use(express.json());
 
 //passport.use(localStrategy);
