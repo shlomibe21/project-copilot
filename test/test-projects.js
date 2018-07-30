@@ -36,7 +36,7 @@ function tearDownDb() {
 function seedProjectCopilotData() {
     console.info('seeding Project-Copilot data');
     const seedData = [];
-    for (let i = 1; i <= 5; i++) {
+    for (let i = 1; i <= 10; i++) {
         seedData.push({
             companyName: faker.company.companyName(),
             projectName: faker.name.findName(),
