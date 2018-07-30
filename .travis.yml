@@ -6,5 +6,3 @@ deploy:
   api_key:
     secure: 280f1cb8-37ed-4aeb-9ab3-a74433586924
   app: project-copilot
-  on:
-    repo: shlomibe21/project-copilot
