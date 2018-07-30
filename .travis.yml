@@ -1,8 +1,4 @@
 language: node_js
 node_js: node
-services: - mongodb
-deploy:
-  provider: heroku
-  api_key:
-    secure: 280f1cb8-37ed-4aeb-9ab3-a74433586924
-  app: project-copilot
+services:
+- mongodb
