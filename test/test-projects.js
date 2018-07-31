@@ -4,16 +4,23 @@ const chai = require('chai');
 const chaiHttp = require('chai-http');
 const faker = require('faker');
 const mongoose = require('mongoose');
+const jwt = require('jsonwebtoken');
 // this makes the expect syntax available throughout this module
 const expect = chai.expect;
 // this makes the should syntax available throughout this module
 const should = chai.should();
 
 const { ProjectsDB } = require('../projects/models');
+const{User} = require('../users/models');
 const { closeServer, runServer, app } = require('../server');
-const { TEST_DATABASE_URL } = require('../config');
+const { TEST_DATABASE_URL, JWT_SECRET } = require('../config');
 
 chai.use(chaiHttp);
+
+const username = 'exampleUser';
+const password = 'examplePass';
+const firstName = 'Example';
+const lastName = 'User';
 
 // this function deletes the entire database.
 // we'll call it in an `afterEach` block below
@@ -62,13 +69,43 @@ function seedProjectCopilotData() {
     return ProjectsDB.insertMany(seedData);
 }
 
+function createUserProfile() {
+    return User.hashPassword(password).then(password =>
+        User.create({
+            username,
+            password,
+            firstName,
+            lastName
+        })
+    );
+}
+
 describe("Project Copilot resource", function () {
+    let token;
+
     before(function () {
         return runServer(TEST_DATABASE_URL);
     });
 
     beforeEach(function () {
-        return seedProjectCopilotData();
+        return createUserProfile()
+            .then(function () {
+                token = jwt.sign(
+                    {
+                        user: {
+                            username,
+                            firstName,
+                            lastName
+                        }
+                    },
+                    JWT_SECRET,
+                    {
+                        algorithm: 'HS256',
+                        subject: username,
+                        expiresIn: '7d'
+                    });
+                return seedProjectCopilotData();
+            });
     });
 
     afterEach(function () {
@@ -93,6 +130,7 @@ describe("Project Copilot resource", function () {
             let res;
             return chai.request(app)
                 .get("/api/projects/projects-list")
+                .set('Authorization', `Bearer ${token}`)
                 .then(function (_res) {
                     res = _res;
                     expect(res).to.have.status(200);
@@ -119,6 +157,7 @@ describe("Project Copilot resource", function () {
             };
             return chai.request(app)
                 .post("/api/projects/project-create")
+                .set('Authorization', `Bearer ${token}`)
                 .send(newProject)
                 .then(function (res) {
                     expect(res).to.have.status(201);
@@ -172,6 +211,7 @@ describe("Project Copilot resource", function () {
                     // data we sent
                     return chai.request(app)
                         .put(`/api/projects/project-update/${project.id}`)
+                        .set('Authorization', `Bearer ${token}`)
                         .send(updateData);
                 })
                 .then(function (res) {
@@ -189,28 +229,29 @@ describe("Project Copilot resource", function () {
     describe('DELETE /api/projects/project-delete/', function () {
         // test strategy:
         // 1. GET projects items so we can get ID of one to delete.
-        // 2. make a DELETE request for the post's id.
+        // 2. make a DELETE request for the project's id.
         // 3. assert that response has right status code
-        // 4. prove that post with the id doesn't exist in db anymore
+        // 4. prove that project with the id doesn't exist in db anymore
         it('should delete a single project by id', function () {
-            let post;
+            let project;
 
             return ProjectsDB
                 .findOne()
-                .then(_post => {
-                    post = _post;
-                    return chai.request(app).delete(`/api/projects/project-delete/${post.id}`);
+                .then(_project => {
+                    project = _project;
+                    return chai.request(app).delete(`/api/projects/project-delete/${project.id}`)
+                    .set('Authorization', `Bearer ${token}`);
                 })
                 .then(res => {
                     res.should.have.status(204);
-                    return ProjectsDB.findById(post.id);
+                    return ProjectsDB.findById(project.id);
                 })
-                .then(_post => {
+                .then(_project => {
                     // when a variable's value is null, chaining `should`
-                    // doesn't work. so `_post.should.be.null` would raise
-                    // an error. `should.be.null(_post)` is how we can
+                    // doesn't work. so `_project.should.be.null` would raise
+                    // an error. `should.be.null(_project)` is how we can
                     // make assertions about a null value.
-                    should.not.exist(_post);
+                    should.not.exist(_project);
                 });
         });
     });
