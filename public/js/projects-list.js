@@ -1,11 +1,19 @@
 'use strict';
 
+// If user is not authenticated go to login page
+if(!localAuthToken) {
+    window.location.href = "/";
+}
+
 // Get projects list
 function getProjectsList(callbackFn) {
     $.ajax({
         url: "/api/projects/projects-list",
         type: 'GET',
         contentType: 'application/json',
+        headers: { 
+            "Authorization": 'Bearer ' + localAuthToken 
+        },
         success: callbackFn,
         error: function (error) {
             console.log('error', error);
@@ -23,10 +31,10 @@ function renderProject(item) {
     }
     let template = `
     <li>
-    <div class="centered-content js-tasks" data-id="${item.id}">
+    <div class="centered-content js-projects" data-id="${item.id}">
     ${headerInfo}${tasksInfo.join("")}
-    <button class="edit-task-button">Edit</button>
-    <button class="delete-task-button">Delete</button>
+    <button class="edit-project-button">Edit</button>
+    <button class="delete-project-button">Delete</button>
     </div>
     </li>
     `;
@@ -46,15 +54,16 @@ function displayProjectsList() {
 }
 
 function displayProjectClick() {
-    /*$('.js-project-info').on('click', '.js-tasks', function (event) {
+    $('.js-project-info').on('click', '.js-projects', event => {
         let id = $(event.currentTarget).find("input[name*='id']").val();
         //console.log(id);
         window.location.href = "project-read.html?id=" + id;
-    });*/
+    });
 }
 
 function editProjectClick() {
-    $('.js-project-info').on('click', '.edit-task-button', function (event) {
+    $('.js-project-info').on('click', '.edit-project-button', event => {
+        event.stopPropagation();
         let id = $(event.currentTarget).parent().find("input[name*='id']").val();
         //console.log(id);
         window.location.href = "project-update.html?id=" + id;
@@ -62,7 +71,8 @@ function editProjectClick() {
 }
 
 function deleteProjectClick() {
-    $('.js-project-info').on('click', '.delete-task-button', function (event) {
+    $('.js-project-info').on('click', '.delete-project-button', event => {
+        event.stopPropagation();
         let id = $(event.currentTarget).parent().find("input[name*='id']").val();
         //console.log(id);
         window.location.href = "project-delete.html?id=" + id;

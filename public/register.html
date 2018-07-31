@@ -14,23 +14,27 @@
 
 <body>
     <header role="banner">
-        <h1>Login</h1>
+        <h1>Register</h1>
     </header>
-    <form role="form" class="login-form">
+    <form role="form" class="register-form">
         <div class="js-error-message"></div>
+        <label for="firstName">First name:</label>
+        <input type="text" name="firstName" placeholder="First Name" required />
+        <label for="lastName">Last name:</label>
+        <input type="text" name="lastName" placeholder="Last Name" required />
         <label for="username">Username:</label>
         <input type="text" name="username" placeholder="username" required />
         <label for="password">Password:</label>
         <input type="password" name="password" placeholder="password" required />
-        <button type="submit">Login</button>
-        <p class="message">Not registered?
-            <a href="/register.html">Create an account</a>
+        <button type="submit" class="submit-button">Register</button>
+        <p class="message">Already registered?
+            <a href="#">Sign In</a>
         </p>
     </form>
-    <a href="#" class="logout">Logout</a>
+    <a href="/projects-list.html" title="">Projects List</a>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
-    <script type="text/javascript" src="/js/authentication.js"></script>
+    <script type="text/javascript" src="/js/register.js"></script>
 </body>
 
 </html>

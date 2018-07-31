@@ -1,5 +1,7 @@
 'use strict';
 
+let localAuthToken = localStorage.getItem('token');
+
 // Build read template for the header of the current project
 function projectHeaderReadTemplate(item) {
     const projectInfo = `

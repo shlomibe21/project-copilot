@@ -1,5 +1,10 @@
 'use strict';
 
+// If user is not authenticated go to login page
+if(!localAuthToken) {
+    window.location.href = "/";
+}
+
 // Get a single project
 function getProjectInfo(callbackFn, id) {
     console.log(id);
@@ -7,6 +12,9 @@ function getProjectInfo(callbackFn, id) {
         url: "/api/projects/project-read" + id,
         type: 'GET',
         contentType: 'application/json',
+        headers: { 
+            "Authorization": 'Bearer ' + localAuthToken 
+        },
         success: callbackFn,
         error: function (error) {
             console.log('error', error);

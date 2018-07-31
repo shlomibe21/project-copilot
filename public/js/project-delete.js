@@ -1,5 +1,10 @@
 'use strict';
 
+// If user is not authenticated go to login page
+if(!localAuthToken) {
+    window.location.href = "/";
+}
+
 function deleteProject() {
     $('.delete-project-button').click(event => {
         event.preventDefault();
@@ -14,6 +19,9 @@ function deleteProject() {
             type: 'DELETE',
             contentType: 'application/json',
             data: JSON.stringify({ id: itemId }),
+            headers: { 
+                "Authorization": 'Bearer ' + localAuthToken 
+            },
             success: function (data) {
                 // Upon success go back to project-list page
                 window.location.href = "projects-list.html";

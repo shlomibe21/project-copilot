@@ -2,15 +2,17 @@
 
 const express = require('express');
 const bodyParser = require('body-parser');
-
+const passport = require('passport');
 const { ProjectsDB } = require('./models');
 
 const router = express.Router();
 
 const jsonParser = bodyParser.json();
 
+const jwtAuth = passport.authenticate('jwt', { session: false });
+
 // GET request to display projects list
-router.get("/projects-list", (req, res) => {
+router.get("/projects-list", jwtAuth, (req, res) => {
     ProjectsDB.find()
         .then(projects => {
             res.json({
@@ -24,7 +26,7 @@ router.get("/projects-list", (req, res) => {
 });
 
 // GET ID request to /project-read/:id
-router.get('/project-read:id', (req, res) => {
+router.get('/project-read:id', jwtAuth, (req, res) => {
     ProjectsDB.findById(req.params.id)
         .then(projects => res.json(projects.serialize()))
         .catch(err => {
@@ -34,7 +36,7 @@ router.get('/project-read:id', (req, res) => {
 });
 
 // POST request, create a new project
-router.post("/project-create", jsonParser, (req, res) => {
+router.post("/project-create", jwtAuth, jsonParser, (req, res) => {
     const requiredFields = ["companyName", "projectName"];
     for (let i = 0; i < requiredFields.length; i++) {
         const field = requiredFields[i];
@@ -65,7 +67,7 @@ router.post("/project-create", jsonParser, (req, res) => {
 
 
 // PUT request, update project
-router.put('/project-update/:id', jsonParser, (req, res) => {
+router.put('/project-update/:id', jwtAuth, jsonParser, (req, res) => {
     if (!(req.params.id && req.body.id && req.params.id === req.body.id)) {
         const message = `Request path id \`${req.params.id}\` and request body id 
 		\`${req.body.id}\` must match.`;
@@ -92,7 +94,7 @@ router.put('/project-update/:id', jsonParser, (req, res) => {
 });
 
 // DELETE request, delete a single project
-router.delete("/project-delete/:id", (req, res) => {
+router.delete("/project-delete/:id", jwtAuth, (req, res) => {
     ProjectsDB
         .findByIdAndRemove(req.params.id)
         .then(() => {

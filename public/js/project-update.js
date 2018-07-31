@@ -1,5 +1,10 @@
 'use strict';
 
+// If user is not authenticated go to login page
+if(!localAuthToken) {
+    window.location.href = "/";
+}
+
 let itemId;
 
 // Get a single project
@@ -9,6 +14,9 @@ function getProjectInfo(callbackFn, id) {
         url: "/api/projects/project-read" + id,
         type: 'GET',
         contentType: 'application/json',
+        headers: { 
+            "Authorization": 'Bearer ' + localAuthToken 
+        },
         success: callbackFn,
         error: function (error) {
             console.log('error', error);
@@ -90,10 +98,7 @@ $('.project-update-form').submit(event => {
     let fields = $("form").serializeArray();
     //console.log(fields);
     // Build an object with all the form's fields
-    let task = {};
-    let tasks = [];
-    let formData = {};
-    
+    let formData = {};    
     formData = buildProjectData(fields, formData);
     
     console.log(formData);
@@ -102,6 +107,9 @@ $('.project-update-form').submit(event => {
         type: 'PUT',
         contentType: 'application/json',
         data: JSON.stringify(formData),
+        headers: { 
+            "Authorization": 'Bearer ' + localAuthToken 
+        },
         success: function (data) {
             // Upon success go back to project-list page
             window.location.href = "projects-list.html";

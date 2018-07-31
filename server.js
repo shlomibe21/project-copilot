@@ -15,20 +15,51 @@ const app = express();
 
 const { router: usersRouter } = require('./users');
 const { router: projectsRouter } = require('./projects');
+const { router: authRouter, localStrategy, jwtStrategy } = require('./auth');
 const bodyParser = require('body-parser');
 
-app.use(express.static('public'));
+// Logging
 app.use(morgan('common'));
+
+// CORS
+app.use(function (req, res, next) {
+    res.header('Access-Control-Allow-Origin', '*');
+    res.header('Access-Control-Allow-Headers', 'Content-Type,Authorization');
+    res.header('Access-Control-Allow-Methods', 'GET,POST,PUT,PATCH,DELETE');
+    if (req.method === 'OPTIONS') {
+        return res.send(204);
+    }
+    next();
+});
+
+app.use(express.static('public'));
 app.use(bodyParser.json());
 
-//app.use(express.json());
-
-//passport.use(localStrategy);
-//passport.use(jwtStrategy);
+passport.use(localStrategy);
+passport.use(jwtStrategy);
 
 app.use('/api/users/', usersRouter);
 app.use('/api/projects/', projectsRouter);
+app.use('/api/auth/', authRouter);
 
+const jwtAuth = passport.authenticate('jwt', { session: false });
+
+// A protected endpoint which needs a valid JWT to access it
+app.get('/api/protected', jwtAuth, (req, res) => {
+    return res.json({
+        data: 'rosebud'
+    });
+});
+
+// Only let the user access the route if they are authenticated.
+function loginRequired(req, res, next) {
+    if (!req.user) {
+        return res.redirect("/");
+        //return res.status(401).render("unauthenticated");
+    }
+
+    next();
+}
 
 // catch-all endpoint if client makes request to non-existent endpoint
 app.use('*', function (req, res) {
