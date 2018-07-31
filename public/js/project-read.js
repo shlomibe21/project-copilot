@@ -48,8 +48,15 @@ function displayProject() {
     getProjectInfo(displayProjectInfo, itemId);
 }
 
+function backToListClicked() {
+    $('.back-button').click(event => {
+        window.location.href = "projects-list.html";
+    });
+}
+
 function handleProject() {
     displayProject();
+    backToListClicked()
 }
 
 $(handleProject);

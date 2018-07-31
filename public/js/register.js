@@ -20,7 +20,7 @@ $('.register-form').submit(event => {
         data: JSON.stringify(formData),
         success: function (data) {
             // Upon success go to login page
-            
+            window.location.href = "/";
         },
         error: function (error) {
             const message = 'Error ' + error.responseJSON.location + ': ' + error.responseJSON.message;

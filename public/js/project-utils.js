@@ -24,7 +24,7 @@ function projectHeaderReadTemplate(item) {
     </div>
     <div>
     <label>Starting Date:</label>
-    <p>${item.startigDate ? item.startigDate : ""}</p>
+    <p>${item.startingDate ? item.startingDate : ""}</p>
     </div>
     <div>
     <label>Ending Date:</label>
@@ -61,27 +61,38 @@ function projectHeaderUpdateTemplate(item) {
     const projectInfo = `
     <input type="hidden" name="id" value=${item.id}>
     <div>
-    <label for="company-name">Company Name:</label>
-    <input type="text" value="${item.companyName ? item.companyName : ""}" name="companyName" id="company-name" class="company-name">
+    <label for="companyName">Company Name:</label>
+    <input type="text" value="${item.companyName ? item.companyName : ""}" name="companyName" id="company-name" class="company-name" required>
     </div>
     <div>
     <label for="project-name">Project Name:</label>
-    <input type="text" value="${item.projectName ? item.projectName : ""}" name="projectName" id="project-name" class="project-name">
+    <input type="text" value="${item.projectName ? item.projectName : ""}" name="projectName" id="project-name" class="project-name" required>
     </div>
     <div>
-    <label for="project-status">Project Status:</label>
-    <input type="text" value="${item.projectStatus ? item.projectStatus : ""}" name="projectStatus" id="project-status" class="project-status">
+    <label for="projectStatus">Project Status:</label>
+    <select name="projectStatus" id="project-status" class="project-status">
+    <option value="" disabled selected>Please Select Status</option>
+        <option value="Active">Active</option>
+        <option value="Completed">Completed</option>
+        <option value="Pending">Pending</option>
+        <option value="Waiting for payment">Waiting for payment</option>
+        <option value="Payment recieved">Payment recieved</option>
+    </select>
     </div>
     <div>
-    <label for="startig-date">Starting Date:</label>
-    <input type="text" value="${item.startigDate ? item.startigDate : ""}" name="startigDate" id="startig-date" class="startig-date">
+    <label for="dueDate">Due Date:</label>
+    <input type="date" value="${item.dueDate ? item.dueDate : ""}" name="dueDate" id="due-date" class="due-date">
     </div>
     <div>
-    <label for="ending-date">Ending Date:</label>
-    <input type="text" value="${item.endingDate ? item.endingDate : ""}" name="endingDate" id="ending-date" class="ending-date">
+    <label for="startingDate">Starting Date:</label>
+    <input type="date" value="${item.startingDate ? item.startingDate : ""}" name="startingDate" id="startig-date" class="startig-date">
     </div>
     <div>
-    <label for="total-hours">Total Hours:</label>
+    <label for="endingDate">Ending Date:</label>
+    <input type="date" value="${item.endingDate ? item.endingDate : ""}" name="endingDate" id="ending-date" class="ending-date">
+    </div>
+    <div>
+    <label for="totalHours">Total Hours:</label>
     <input type="text" value="${item.totalHours ? item.totalHours : ""}" name="totalHours" id="total-hours" class="total-hours">
     </div>
     `;

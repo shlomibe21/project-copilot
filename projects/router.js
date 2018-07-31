@@ -50,9 +50,11 @@ router.post("/project-create", jwtAuth, jsonParser, (req, res) => {
     ProjectsDB.create({
         companyName: req.body.companyName,
         projectName: req.body.projectName,
+        projectStatus: req.body.projectStatus,
         dueDate: req.body.dueDate,
         startingDate: req.body.startingDate,
         endingDate: req.body.endingDate,
+        totalHours: req.body.totalHours,
         created: req.body.created,
         tasks: req.body.tasks
     })
@@ -79,7 +81,8 @@ router.put('/project-update/:id', jwtAuth, jsonParser, (req, res) => {
     // we only support a subset of fields being updateable.
     // if the user sent over any of the updatableFields, we udpate those values
     // in document
-    const updateableFields = ['companyName', 'projectName', 'tasks'];
+    const updateableFields = ['companyName', 'projectName', 'projectStatus', 
+    'dueDate', 'startingDate', 'endingDate', 'totalHours', 'tasks'];
 
     updateableFields.forEach(field => {
         if (field in req.body) {

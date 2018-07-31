@@ -33,8 +33,15 @@ function deleteProject() {
     });
 }
 
+function cancelDeleteClicked() {
+    $('.cancel-button').click(event => {
+        window.location.href = "projects-list.html";
+    });
+}
+
 function handleProjectDelete() {
     deleteProject();
+    cancelDeleteClicked();
 }
 
 $(handleProjectDelete);

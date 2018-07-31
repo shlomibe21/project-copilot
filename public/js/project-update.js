@@ -99,8 +99,7 @@ $('.project-update-form').submit(event => {
     //console.log(fields);
     // Build an object with all the form's fields
     let formData = {};    
-    formData = buildProjectData(fields, formData);
-    
+    formData = buildProjectData(fields, formData);    
     console.log(formData);
     $.ajax({
         url: "/api/projects/project-update/" + itemId,
@@ -120,9 +119,16 @@ $('.project-update-form').submit(event => {
     });
 });
 
+function cancelUpdateClicked() {
+    $('.cancel-button').click(event => {
+        window.location.href = "projects-list.html";
+    });
+}
+
 function handleProject() {
     displayProject();
     addTaskClick();
+    cancelUpdateClicked();
 }
 
 $(handleProject);

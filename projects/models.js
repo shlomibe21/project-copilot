@@ -6,9 +6,11 @@ mongoose.Promise = global.Promise;
 const projectCopilotSchema = mongoose.Schema({
 	companyName: { type: String, required: true },
     projectName: { type: String, required: true },
+    projectStatus: {type: String},
     dueDate: { type: Date },
 	startingDate: { type: Date },
-	endingDate: { type: Date },
+    endingDate: { type: Date },
+    totalHours: { type: Number },
     created: { type: Date, default: Date.now },
     tasks: [{
         created: { type: Date },
@@ -22,9 +24,11 @@ projectCopilotSchema.methods.serialize = function () {
 		id: this._id,
 		companyName: this.companyName,
         projectName: this.projectName,
+        projectStatus: this.projectStatus,
         dueDate: this.dueDate,
 		startingDate: this.startingDate,
-		endingDate: this.endingDate,
+        endingDate: this.endingDate,
+        totalHours: this.totalHours,
         createdDate: this.createdDate,
         tasks: this.tasks
 	};

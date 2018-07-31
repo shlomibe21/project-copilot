@@ -1,7 +1,7 @@
 'use strict';
 
 // If user is not authenticated go to login page
-if(!localAuthToken) {
+if (!localAuthToken) {
     window.location.href = "/";
 }
 
@@ -9,9 +9,9 @@ $('.project-create-form').submit(event => {
     event.preventDefault();
     // Fetch all the the data from the form
     let fields = $("form").serializeArray();
-    
+
     // Build an object with all the form's fields
-    let formData = {};    
+    let formData = {};
     jQuery.each(fields, function (i, field) {
         //console.log(field.name);
         //console.log(field.value);
@@ -23,8 +23,8 @@ $('.project-create-form').submit(event => {
         type: 'POST',
         contentType: 'application/json',
         data: JSON.stringify(formData),
-        headers: { 
-            "Authorization": 'Bearer ' + localAuthToken 
+        headers: {
+            "Authorization": 'Bearer ' + localAuthToken
         },
         success: function (data) {
             // Upon success go back to project-list page
@@ -36,8 +36,22 @@ $('.project-create-form').submit(event => {
     });
 });
 
+function cancelProjectClicked() {
+    $('.cancel-button').click(event => {
+        window.location.href = "projects-list.html";
+    });
+}
+
+function displayCreateProjectForm() {
+    let data = {};
+    // Display header info
+    let headerInfo = projectHeaderUpdateTemplate(data)
+    $('.js-project-info').append(headerInfo);
+}
+
 function handleProject() {
-    
+    displayCreateProjectForm();
+    cancelProjectClicked();
 }
 
 $(handleProject);

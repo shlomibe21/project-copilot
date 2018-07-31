@@ -47,9 +47,10 @@ function seedProjectCopilotData() {
         seedData.push({
             companyName: faker.company.companyName(),
             projectName: faker.name.findName(),
+            projectStatus: 'Active',
             dueDate: faker.date.future(),
-            startingDate: "",
-            endingDate: "",
+            startingDate: faker.date.future(),
+            endingDate: faker.date.future(),
             createdDate: faker.date.past(),
             tasks: [
                 {
