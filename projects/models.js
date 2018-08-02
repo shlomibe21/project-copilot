@@ -13,6 +13,10 @@ const projectCopilotSchema = mongoose.Schema({
     endingDate: { type: Date },
     totalHours: { type: Number },
     created: { type: Date, default: Date.now },
+    user: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'User'
+    },
     tasks: [{
         created: { type: Date },
         description: { type: String },

@@ -13,9 +13,7 @@ const jwtAuth = passport.authenticate('jwt', { session: false });
 
 // GET request to display projects list
 router.get("/projects-list", jwtAuth, (req, res) => {
-    console.log(req.user._id);
-    console.log(req.params);
-    ProjectsDB.find()
+    ProjectsDB.find({user: req.user.id})
         .then(projects => {
             res.json({
                 projects: projects.map(project => project.serialize())
@@ -29,7 +27,7 @@ router.get("/projects-list", jwtAuth, (req, res) => {
 
 // GET ID request to /project-read/:id
 router.get('/project-read/:id', jwtAuth, (req, res) => {
-    ProjectsDB.findById(req.params.id)
+    ProjectsDB.findById({ _id: req.params.id ,  user: req.user.id })
         .then(projects => res.json(projects.serialize()))
         .catch(err => {
             console.error(err);
@@ -37,7 +35,7 @@ router.get('/project-read/:id', jwtAuth, (req, res) => {
         });
 });
 
-// GET ID request to /project-read/:id
+// GET ID request to /task-read/:id
 router.get('/task-read/:id', (req, res) => {
     ProjectsDB.findOneAndRemove({"tasks._id": req.params.id})
         .then(task => res.json(task))
@@ -69,6 +67,7 @@ router.post("/project-create", jwtAuth, (req, res) => {
         endingDate: req.body.endingDate,
         totalHours: req.body.totalHours,
         created: req.body.created,
+        user: req.user.id,
         tasks: req.body.tasks
     })
         .then(ProjectsDB => {
@@ -104,7 +103,7 @@ router.put('/project-update/:id', jwtAuth, jsonParser, (req, res) => {
     });
     console.log(`Updating a project item: \`${req.params.id}\``);
     ProjectsDB
-        .findByIdAndUpdate(req.params.id, { $set: toUpdate }, { new: true })
+        .findByIdAndUpdate({ _id: req.params.id ,  user: req.user.id }, { $set: toUpdate }, { new: true })
         .then(project => res.status(201).json(project))
         .catch(error => res.status(500).json({ message: "Internal server error" }));
 });
