@@ -9,7 +9,7 @@ if(!localAuthToken) {
 function getProjectInfo(callbackFn, id) {
     console.log(id);
     $.ajax({
-        url: "/api/projects/project-read" + id,
+        url: "/api/projects/project-read/" + id,
         type: 'GET',
         contentType: 'application/json',
         headers: { 

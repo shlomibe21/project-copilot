@@ -102,8 +102,10 @@ function projectHeaderUpdateTemplate(item) {
 
 // Build read template for all the tasks of the current project
 function projectTasksUpdateTemplate(task) {
-    const tasks = `
-    <input type="hidden" name="task-id" value=${task._id}>
+    const taskTemplate = `
+    <li>
+    <div class="task-container">
+    <input type="hidden" name="taskid" value=${task._id}>
     <div>
     <label for="description">Description:</label>
     <input type="text" value="${task.description ? task.description : ""}" name="description" class="description">
@@ -112,7 +114,10 @@ function projectTasksUpdateTemplate(task) {
     <label for="hours">Hours:</label>
     <input type="text" value="${task.hours ? task.hours : ""}" name="hours" class="hours">
     </div>
+    <button class="delete-task-button">Delete Task</button>
+    </div>
+    </li>
     `;
 
-    return tasks;
+    return taskTemplate;
 }

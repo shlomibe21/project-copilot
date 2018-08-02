@@ -39,7 +39,7 @@ passport.use(localStrategy);
 passport.use(jwtStrategy);
 
 app.use('/api/users/', usersRouter);
-app.use('/api/projects/', projectsRouter);
+app.use('/api/projects/' , projectsRouter);
 app.use('/api/auth/', authRouter);
 
 const jwtAuth = passport.authenticate('jwt', { session: false });
@@ -57,7 +57,7 @@ function loginRequired(req, res, next) {
         return res.redirect("/");
         //return res.status(401).render("unauthenticated");
     }
-
+    
     next();
 }
 

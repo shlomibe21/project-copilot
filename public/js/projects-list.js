@@ -53,7 +53,7 @@ function displayProjectsList() {
     getProjectsList(displayProjects);
 }
 
-function displayProjectClick() {
+function displayProjectClicked() {
     $('.js-project-info').on('click', '.js-projects', event => {
         let id = $(event.currentTarget).find("input[name*='id']").val();
         //console.log(id);
@@ -61,7 +61,7 @@ function displayProjectClick() {
     });
 }
 
-function editProjectClick() {
+function editProjectClicked() {
     $('.js-project-info').on('click', '.edit-project-button', event => {
         event.stopPropagation();
         let id = $(event.currentTarget).parent().find("input[name*='id']").val();
@@ -70,7 +70,7 @@ function editProjectClick() {
     });
 }
 
-function deleteProjectClick() {
+function deleteProjectClicked() {
     $('.js-project-info').on('click', '.delete-project-button', event => {
         event.stopPropagation();
         let id = $(event.currentTarget).parent().find("input[name*='id']").val();
@@ -81,9 +81,9 @@ function deleteProjectClick() {
 
 function handleProjectsList() {
     displayProjectsList();
-    displayProjectClick();
-    editProjectClick();
-    deleteProjectClick();
+    displayProjectClicked();
+    editProjectClicked();
+    deleteProjectClicked();
 }
 
 $(handleProjectsList);

@@ -31,7 +31,7 @@ $('.login-form').submit(event => {
     });
 });
 
-function logoutClick() {
+function logoutClicked() {
     $('.logout').on('click', event => {
 		event.preventDefault();
 		localStorage.setItem('token','');
@@ -39,7 +39,7 @@ function logoutClick() {
 	});
 }
 function handleAuthentication() {
-    logoutClick();
+    logoutClicked();
 }
 
 $(handleAuthentication);

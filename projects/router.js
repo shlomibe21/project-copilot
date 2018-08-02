@@ -13,6 +13,8 @@ const jwtAuth = passport.authenticate('jwt', { session: false });
 
 // GET request to display projects list
 router.get("/projects-list", jwtAuth, (req, res) => {
+    console.log(req.user._id);
+    console.log(req.params);
     ProjectsDB.find()
         .then(projects => {
             res.json({
@@ -26,17 +28,28 @@ router.get("/projects-list", jwtAuth, (req, res) => {
 });
 
 // GET ID request to /project-read/:id
-router.get('/project-read:id', jwtAuth, (req, res) => {
+router.get('/project-read/:id', jwtAuth, (req, res) => {
     ProjectsDB.findById(req.params.id)
         .then(projects => res.json(projects.serialize()))
         .catch(err => {
             console.error(err);
-            res.status(500).json({ message: "GET ID Error: Internal server error" });
+            res.status(500).json({ message: "GET PROJECT BY ID Error: Internal server error" });
+        });
+});
+
+// GET ID request to /project-read/:id
+router.get('/task-read/:id', (req, res) => {
+    ProjectsDB.findOneAndRemove({"tasks._id": req.params.id})
+        .then(task => res.json(task))
+        .catch(err => {
+            console.error(err);
+            res.status(500).json({ message: "GET TASK BY ID Error: Internal server error" });
         });
 });
 
 // POST request, create a new project
-router.post("/project-create", jwtAuth, jsonParser, (req, res) => {
+router.post("/project-create", jwtAuth, (req, res) => {
+    console.log(req.user);
     const requiredFields = ["companyName", "projectName"];
     for (let i = 0; i < requiredFields.length; i++) {
         const field = requiredFields[i];

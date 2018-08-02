@@ -11,7 +11,7 @@ let itemId;
 function getProjectInfo(callbackFn, id) {
     console.log(id);
     $.ajax({
-        url: "/api/projects/project-read" + id,
+        url: "/api/projects/project-read/" + id,
         type: 'GET',
         contentType: 'application/json',
         headers: { 
@@ -31,7 +31,11 @@ function displayProjectInfo(data) {
 
     // Display tasks info
     let tasksInfo = data.tasks.map((task) => projectTasksUpdateTemplate(task));
-    $('.js-project-info').append(tasksInfo);
+    let tasksTemplate = `
+    <ul>${tasksInfo.join("")}</ul>
+    `;
+
+    $('.js-project-info').append(tasksTemplate);
 }
 
 function displayProject() {
@@ -46,7 +50,7 @@ function displayProject() {
     getProjectInfo(displayProjectInfo, itemId);
 }
 
-function addTaskClick() {
+function addTaskClicked() {
     $('.add-task-button').click(event => {
         let newTask = `
         <div>
@@ -56,6 +60,9 @@ function addTaskClick() {
         <div>
         <label for="hours">Hours:</label>
         <input type="text" name="hours" class="hours">
+        </div>
+        <div>
+        <button class="delete-task-button">Delete Task</button>
         </div>
         `;
         console.log(newTask);
@@ -125,10 +132,37 @@ function cancelUpdateClicked() {
     });
 }
 
+function deleteTaskClicked() {
+    $('.js-project-info').on('click', '.delete-task-button', event => {
+        event.stopPropagation();
+        event.preventDefault();
+
+        let itemId = $(event.currentTarget).parent().find("input[name*='taskid']").val();
+        //console.log(itemId);
+        $.ajax({
+            url: "/api/projects/task-read" + itemId,
+            type: 'GET',
+            contentType: 'application/json',
+            data: JSON.stringify({ id: itemId }),
+            headers: { 
+                "Authorization": 'Bearer ' + localAuthToken 
+            },
+            success: function (data) {
+                // Upon success go back to project-list page
+                //window.location.href = "projects-list.html";
+            },
+            error: function (error) {
+                console.log('error', error);
+            },
+        });
+    });
+}
+
 function handleProject() {
     displayProject();
-    addTaskClick();
+    addTaskClicked();
     cancelUpdateClicked();
+    deleteTaskClicked();
 }
 
 $(handleProject);
