@@ -95,7 +95,7 @@ describe('Auth endpoints', function () {
           expect(res).to.have.status(401);
         });
     });
-    /*TODO: check why it is failing!!!
+    
     it('Should return a valid auth token', function () {
       return chai
         .request(app)
@@ -116,7 +116,7 @@ describe('Auth endpoints', function () {
             id: payload.user.id
           });
         });
-    });*/
+    });
   });
 
   describe('/api/auth/refresh', function () {

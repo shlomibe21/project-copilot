@@ -28,7 +28,7 @@ router.get("/projects-list", jwtAuth, (req, res) => {
 // GET ID request to /project-read/:id
 router.get('/project-read/:id', jwtAuth, (req, res) => {
     ProjectsDB.findById({ _id: req.params.id ,  user: req.user.id })
-        .then(projects => res.json(projects.serialize()))
+        .then(project => res.json(project.serialize()))
         .catch(err => {
             console.error(err);
             res.status(500).json({ message: "GET PROJECT BY ID Error: Internal server error" });
@@ -36,9 +36,9 @@ router.get('/project-read/:id', jwtAuth, (req, res) => {
 });
 
 // GET ID request to /task-read/:id
-router.get('/task-read/:id', (req, res) => {
-    ProjectsDB.findOneAndRemove({"tasks._id": req.params.id})
-        .then(task => res.json(task))
+router.get('/task-read/:id/:taskid', (req, res) => {
+    ProjectsDB.findOne({"_id": req.params.id},{tasks: { $elemMatch: {_id: req.params.taskid}}})
+        .then(task => res.json(task.serialize()))
         .catch(err => {
             console.error(err);
             res.status(500).json({ message: "GET TASK BY ID Error: Internal server error" });
