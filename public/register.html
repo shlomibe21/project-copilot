@@ -22,9 +22,21 @@
         <h1>Welcome to Project Copilot</h1>
     </header>
     <main role=main>
-        <form role="form" class="login-form centered-container narrow">
-            <h2 class="message">Login</h2>
+        <form role="form" class="register-form centered-container narrow">
+            <h2 class="message">Register</h2>
             <div class="js-error-message"></div>
+            <div>
+                <label for="firstName">First name:</label>
+            </div>
+            <div>
+                <input type="text" name="firstName" class="form-input" placeholder="First Name" required />
+            </div>
+            <div>
+                <label for="lastName">Last name:</label>
+            </div>
+            <div>
+                <input type="text" name="lastName" class="form-input" placeholder="Last Name" required />
+            </div>
             <div>
                 <label for="username">Username:</label>
             </div>
@@ -38,11 +50,11 @@
                 <input type="password" name="password" class="form-input" placeholder="Password" required />
             </div>
             <div>
-                <button type="submit" class="btn">Submit</button>
+                <button type="submit" class="btn submit-button">Register</button>
             </div>
             <div>
-                <p class="message">Not registered?
-                    <a href="/register.html">Create an account</a>
+                <p class="message">Already registered?
+                    <a href="/">Sign In</a>
                 </p>
             </div>
         </form>
@@ -54,6 +66,7 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
     <script type="text/javascript" src="/js/authentication.js"></script>
+    <script type="text/javascript" src="/js/register.js"></script>
 </body>
 
 </html>

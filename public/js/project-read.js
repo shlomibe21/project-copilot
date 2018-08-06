@@ -1,45 +1,71 @@
 'use strict';
 
-function getProjectInfo(callbackFn) {
-    setTimeout(function () { callbackFn(MOCK_PROJECTS_LIST, 0) }, 100);
+// If user is not authenticated go to login page
+if (!localAuthToken) {
+    window.location.href = "/";
+}
+
+// Get a single project
+function getProjectInfo(callbackFn, id) {
+    console.log(id);
+    $.ajax({
+        url: "/api/projects/project-read/" + id,
+        type: 'GET',
+        contentType: 'application/json',
+        headers: {
+            "Authorization": 'Bearer ' + localAuthToken
+        },
+        success: callbackFn,
+        error: function (error) {
+            console.log('error', error);
+        },
+    });
 }
 
 // Note: this function can stay the same when we connect
 // to real API later
 function displayProjectInfo(data) {
-    // Get current url
-    const url = window.location.search;   
-    // Get the id of the selected project from the url
-    let itemId = getParamValFromUrl(url, 'id');    
-    if(!itemId) {
-        alert('Project id is missing');
-        return;
-    }
-    
-    // Find the project with the given id
-    let item = data.projectsList.find(val => val.id === itemId);
-    if(!item) {
-        alert("Can't find the requested project id=" + itemId);
-        return;
-    }
-    
     // Display header info
-    let headerInfo =  projectHeaderReadTemplate(item)
-    $('.js-project-info').append(headerInfo);
+    let headerInfo = projectHeaderReadTemplate(data)
+    $('.js-projects-info').append(headerInfo);
 
-    // Display tasks info
-    let tasksInfo = item.tasks.map((task) => projectTasksReadTemplate(task));
-    $('.js-project-info').append(tasksInfo);
+    if ((data.tasks) && ((data.tasks.length > 0))) {
+        // Display tasks info
+        let tasksInfo = data.tasks.map((task) => projectTasksReadTemplate(task));
+        let tasksTemplate = `
+        <section role="region" class="js-tasks">
+        <legend class="tasks-title">Tasks:</legend>
+        ${tasksInfo.join("")}
+        </section>
+        `;
+        $('.js-projects-info').append(tasksTemplate);
+    }
+    displayTimer();
 }
 
 // Note: this function can stay the same when we
 // connect to real API later
-function displayProject() {
-    getProjectInfo(displayProjectInfo);
+function displayProject(callbackFn) {
+    // Get current url
+    const url = window.location.search;
+    // Get the id of the selected project from the url
+    let itemId = getParamValFromUrl(url, 'id');
+    if (!itemId) {
+        alert('Project id is missing');
+        return;
+    }
+    getProjectInfo(callbackFn, itemId);
 }
 
-function handleProject() { 
-    displayProject();
+function backToListClicked() {
+    $('.back-button').click(event => {
+        window.location.href = "projects-list.html";
+    });
+}
+
+function handleProject() {
+    displayProject(displayProjectInfo);
+    backToListClicked()
 }
 
 $(handleProject);

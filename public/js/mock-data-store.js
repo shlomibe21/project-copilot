@@ -5,7 +5,7 @@ const MOCK_PROJECTS_LIST = {
             "companyName": "company1",
             "projectName": "project1",
             "projectStatus": "active",
-            "startigDate": "06/09/2018",
+            "startingDate": "06/09/2018",
             "endingDate": "",
             "totalHours": 17,
             tasks: [
@@ -24,7 +24,7 @@ const MOCK_PROJECTS_LIST = {
             "companyName": "company2",
             "projectName": "project12",
             "projectStatus": "active",
-            "startigDate": "05/12/2018",
+            "startingDate": "05/12/2018",
             "endingDate": "",
             "totalHours": 43,
             tasks: [
@@ -47,7 +47,7 @@ const MOCK_PROJECTS_LIST = {
             "companyName": "company3",
             "projectName": "project3",
             "projectStatus": "active",
-            "startigDate": "01/09/2018",
+            "startingDate": "01/09/2018",
             "endingDate": "",
             "totalHours": 33,
             tasks: [
@@ -62,7 +62,7 @@ const MOCK_PROJECTS_LIST = {
             "companyName": "company4",
             "projectName": "project4",
             "projectStatus": "Waiting for payment",
-            "startigDate": "12/08/2017",
+            "startingDate": "12/08/2017",
             "endingDate": "06/15/2018",
             "totalHours": "50",
             tasks: [
