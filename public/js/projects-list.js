@@ -25,18 +25,33 @@ function renderProject(item) {
     // Build header template
     let headerInfo = projectHeaderReadTemplate(item);
     let tasksInfo;
-    if (item.tasks) {
+    let tasksTemplate='';
+    console.log(item.tasks);
+    if ((item.tasks) && ((item.tasks.length > 0))) {
         // Build tasks template
         tasksInfo = item.tasks.map((task) => projectTasksReadTemplate(task));
+        tasksTemplate = `
+        <section role="region" class="js-tasks">
+        <legend class="tasks-title">Tasks:</legend>
+        ${tasksInfo.join("")}
+        </section>
+        `;
     }
     let template = `
+    <section role="region" class="js-project-frame">
+    <legend></legend>
     <li>
-    <div class="centered-content js-projects" data-id="${item.id}">
-    ${headerInfo}${tasksInfo.join("")}
+    <div class="js-project-content">
+    <div class="js-project-header">
+    ${headerInfo}
+    </div>
+    ${tasksTemplate}
+    </div>
+    <button class="view-project-button">View</button>
     <button class="edit-project-button">Edit</button>
     <button class="delete-project-button">Delete</button>
-    </div>
     </li>
+    </section>
     `;
     return template;
 }
@@ -45,7 +60,7 @@ function displayProjects(data) {
     for (let listItem in data.projects) {
         let item = data.projects[listItem];
         let project = renderProject(item);
-        $('.js-project-info').append(project);
+        $('.js-projects-info').append(project);
     }
 }
 
@@ -53,16 +68,17 @@ function displayProjectsList() {
     getProjectsList(displayProjects);
 }
 
-function displayProjectClicked() {
-    $('.js-project-info').on('click', '.js-projects', event => {
-        let id = $(event.currentTarget).find("input[name*='id']").val();
+function viewProjectClicked() {
+    $('.js-projects-info').on('click', '.view-project-button', event => {
+        event.stopPropagation();
+        let id = $(event.currentTarget).parent().find("input[name*='id']").val();
         //console.log(id);
         window.location.href = "project-read.html?id=" + id;
     });
 }
 
 function editProjectClicked() {
-    $('.js-project-info').on('click', '.edit-project-button', event => {
+    $('.js-projects-info').on('click', '.edit-project-button', event => {
         event.stopPropagation();
         let id = $(event.currentTarget).parent().find("input[name*='id']").val();
         //console.log(id);
@@ -71,7 +87,7 @@ function editProjectClicked() {
 }
 
 function deleteProjectClicked() {
-    $('.js-project-info').on('click', '.delete-project-button', event => {
+    $('.js-projects-info').on('click', '.delete-project-button', event => {
         event.stopPropagation();
         let id = $(event.currentTarget).parent().find("input[name*='id']").val();
         //console.log(id);
@@ -81,7 +97,7 @@ function deleteProjectClicked() {
 
 function handleProjectsList() {
     displayProjectsList();
-    displayProjectClicked();
+    viewProjectClicked();
     editProjectClicked();
     deleteProjectClicked();
 }

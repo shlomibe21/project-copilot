@@ -46,12 +46,13 @@ function displayCreateProjectForm() {
     let data = {};
     // Display header info
     let headerInfo = projectHeaderUpdateTemplate(data)
-    $('.js-project-info').append(headerInfo);
+    $('.js-projects-info').append(headerInfo);
 }
 
 function handleProject() {
     displayCreateProjectForm();
     cancelProjectClicked();
+    datePicker();
 }
 
 $(handleProject);

@@ -1,0 +1,255 @@
+html {
+    height: 100%;
+    box-sizing: border-box;
+  }
+  
+  *,
+  *:before,
+  *:after {
+    box-sizing: inherit;
+  }
+
+  body {
+    font-family: 'Roboto', sans-serif;
+    position: relative;
+    margin: 0;
+    min-height: 100%;
+    padding-bottom: 6rem;
+    background-color: #efefef;
+}
+
+.nav-bar {
+	height: 60px;
+    margin: 0;
+    background: #012c7a;
+    background-image: -webkit-linear-gradient(top, #012c7a, #4a81e6);
+    background-image: -moz-linear-gradient(top, #012c7a, #4a81e6);
+    background-image: -ms-linear-gradient(top, #012c7a, #4a81e6);
+    background-image: -o-linear-gradient(top, #012c7a, #4a81e6);
+    background-image: linear-gradient(to bottom, #012c7a, #4a81e6);
+    color: red;
+}
+
+.nav-bar .logo {
+    display: inline-block;    
+	vertical-align: middle;
+    color: white;
+    padding-left: 20px;
+    font-size: 1.2em;
+}
+
+.logo a {
+    color: white;
+    text-decoration: none;
+}
+
+.top-nav {
+    position: absolute;
+    right: 20px;
+    top: 18px;
+  }
+
+.login-link, .logout-link { 
+    color: white;
+    font-size: 1.2em;
+    text-decoration: none;
+}
+
+header {
+    text-align: center;
+}
+
+footer {
+	position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    height: 60px;
+    background: #012c7a;
+    background-image: -webkit-linear-gradient(top, #012c7a, #4a81e6);
+    background-image: -moz-linear-gradient(top, #012c7a, #4a81e6);
+    background-image: -ms-linear-gradient(top, #012c7a, #4a81e6);
+    background-image: -o-linear-gradient(top, #012c7a, #4a81e6);
+    background-image: linear-gradient(to bottom, #012c7a, #4a81e6);
+    text-align: center;
+}
+
+footer p {    
+	display: inline-block;    
+	vertical-align: middle;
+    color: white;
+    font-size: 1.1em;
+}
+
+h1 {
+    color:purple; /*#2079df*/
+}
+
+ul {
+	list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+li {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+legend {
+    /*padding-left: 10px;*/
+}
+
+textarea {
+    min-height: 120px;
+}
+
+.btn {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    background: #012c7a;
+    background-image: -webkit-linear-gradient(top, #012c7a, #4a81e6);
+    background-image: -moz-linear-gradient(top, #012c7a, #4a81e6);
+    background-image: -ms-linear-gradient(top, #012c7a, #4a81e6);
+    background-image: -o-linear-gradient(top, #012c7a, #4a81e6);
+    background-image: linear-gradient(to bottom, #012c7a, #4a81e6);
+    border: none;
+    border-radius: 4px;
+    color: #ffffff;
+    font-size: 16px;
+    padding: 10px 20px 10px 20px;
+    text-decoration: none;
+    cursor: pointer;
+    outline: none;
+}
+
+.btn:hover {
+    background: #0694c7;
+    background-image: -webkit-linear-gradient(top, #0694c7, #8fc0e0);
+    background-image: -moz-linear-gradient(top, #0694c7, #8fc0e0);
+    background-image: -ms-linear-gradient(top, #0694c7, #8fc0e0);
+    background-image: -o-linear-gradient(top, #0694c7, #8fc0e0);
+    background-image: linear-gradient(to bottom, #0694c7, #8fc0e0);
+    text-decoration: none;
+    color: #ff0000;
+}
+
+.centered-container {
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;  
+}
+
+.form-input {
+    width: 100%;
+    height: 40px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border-radius: 4px;
+    border: 0;
+    outline: 0;
+    /*border-bottom: 2px solid #2079df;*/
+    box-shadow: none;
+    padding-left: 8px;
+}
+
+.register-form .btn, .login-form .btn {
+    width: 100%;
+}
+
+.js-project-frame {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    background-color: white;
+    border-radius: 10px;
+    /*border: 1px solid purple;*/
+}
+
+.js-project-content {
+    height: 220px;
+    overflow-y: auto;
+    border-bottom: 2px solid purple;
+    /*border: solid 1px black;*/
+}
+
+.js-project-header {
+    height: 215px;
+}
+
+.js-projects-info label {
+    display: inline-block;
+    color: purple;
+}
+
+.js-projects-info p {
+    display: inline-block;
+    /*color: red;*/
+}
+
+.tasks-title {
+    margin-top: 30px;
+    margin-left: 30px;
+    font-size: 30px;
+    font-weight: 500;
+    color: purple;
+}
+
+.task-container {
+   /*background-color: #efefef;*/
+   padding-top: 20px;
+   margin-bottom: 20px;
+   border-top: solid 1px purple;
+   /*border-bottom: solid 1px blue;*/
+}
+
+.js-project-frame button {
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.view-project-button {
+    margin-left: 20px;
+    color: green;
+    background-color: white;
+}
+
+.edit-project-button {
+    color: rgb(255, 115, 0);
+    background-color: white;
+}
+
+.delete-project-button {
+    color: red;
+    background-color: white;
+}
+
+.message {
+    text-align: center;
+}
+
+.delete-project-area {
+    text-align: center;
+}
+
+.centered-btn-wrapper {
+    text-align: center;
+}
+
+.delete-task-button {
+    margin-left: 30px;
+    color: red;
+}
+
+.js-error-message {
+    color: red;
+}
+@media screen and (min-width: 600px) {
+    .centered-container.narrow {
+		max-width: 450px;
+    }
+    
+    .centered-container {
+		max-width: 960px;
+	}
+}

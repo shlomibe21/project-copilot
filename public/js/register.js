@@ -19,6 +19,7 @@ $('.register-form').submit(event => {
         contentType: 'application/json',
         data: JSON.stringify(formData),
         success: function (data) {
+            alert("Registration was successful!");
             // Upon success go to login page
             window.location.href = "/";
         },

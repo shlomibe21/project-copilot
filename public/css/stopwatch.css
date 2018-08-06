@@ -1,0 +1,38 @@
+.stopwatch-wrapper {
+    text-align: center;
+}
+
+.stopwatch-content {
+    color: purple;
+}
+
+#sw_status {
+    color: green;
+}
+
+.stopwatch-time {
+    color: purple;
+}
+
+#sw_start {
+    width: 80px;
+}
+
+.sw-number {
+    font-size: 25px;
+}
+
+/* Non-mobile, setting */
+@media only screen and (min-width: 1500px) {
+    .stopwatch-wrapper {
+        position: relative;
+        top: 100px;
+        left: 20px;
+    }
+
+    .stopwatch-content {
+        position: fixed;
+        
+        /*text-align: center;*/
+    }
+}

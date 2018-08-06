@@ -55,11 +55,13 @@ function seedProjectCopilotData() {
             tasks: [
                 {
                     createdDate: faker.date.past(),
+                    taskName: faker.name.findName(),
                     description: faker.lorem.text(),
                     hours: faker.random.number({ min: 1, max: 100 })
                 },
                 {
                     createdDate: faker.date.past(),
+                    taskName: faker.name.findName(),
                     description: faker.lorem.text(),
                     hours: faker.random.number({ min: 5, max: 100 })
                 }

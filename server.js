@@ -39,7 +39,7 @@ passport.use(localStrategy);
 passport.use(jwtStrategy);
 
 app.use('/api/users/', usersRouter);
-app.use('/api/projects/' , projectsRouter);
+app.use('/api/projects/', projectsRouter);
 app.use('/api/auth/', authRouter);
 
 const jwtAuth = passport.authenticate('jwt', { session: false });
@@ -50,16 +50,6 @@ app.get('/api/protected', jwtAuth, (req, res) => {
         data: 'rosebud'
     });
 });
-
-// Only let the user access the route if they are authenticated.
-function loginRequired(req, res, next) {
-    if (!req.user) {
-        return res.redirect("/");
-        //return res.status(401).render("unauthenticated");
-    }
-    
-    next();
-}
 
 // catch-all endpoint if client makes request to non-existent endpoint
 app.use('*', function (req, res) {

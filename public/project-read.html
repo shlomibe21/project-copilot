@@ -4,26 +4,53 @@
 <head>
     <title>Project Copilot</title>
     <meta charset="UTF-8">
-     <!-- Responsive viewport tag, tells small screens that it's responsive -->
-     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-     <link href="https://fonts.googleapis.com/css?family=Archivo" rel="stylesheet">
- 
-     <link href="main.css" rel="stylesheet" type="text/css" />
+    <!-- Responsive viewport tag, tells small screens that it's responsive -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css?family=Philosopher:700|Roboto" rel="stylesheet">
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <link href="./css/main.css" rel="stylesheet" type="text/css" />
+    <link href="./css/float-grid.css" rel="stylesheet" type="text/css" />
+    <link href="./css/stopwatch.css" rel="stylesheet" type="text/css" />
 </head>
 
 <body>
+    <div class="nav-bar">
+        <p class="logo">
+            <a href="/projects-list.html">Project Copilot</a>
+        </p>
+        <nav role="navigation" class="top-nav">
+        </nav>
+    </div>
+    <div class=stopwatch-wrapper>
+        <span class="js-stopwatch"></span>
+    </div>
     <header role="banner">
         <h1>Project Details</h1>
     </header>
-    <main role="main">
-        <div class="js-project-info"></div>
-        <button type="button" class="back-button">Back to Projects List</button>
-    </main>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
-    <script type="text/javascript" src="/js/mock-data-store.js"></script>
+    <div class="centered-container">
+        <main role="main">
+            <div class="js-project-frame">
+                <div class="js-projects-info" aria-live="polite"></div>
+            </div>
+            <div class="centered-btn-wrapper">
+                <button type="button" class="btn back-button">Back to Projects List</button>
+            </div>
+        </main>
+    </div>
+
+    <footer role="contentinfo">
+        <p>© 2018 Onca, Inc. Shlomi Benshlomo</p>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+        crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/ui/1.12.0/jquery-ui.min.js" integrity="sha256-eGE6blurk5sHj+rmkfsGYeKyZx3M4bG+ZlFyA7Kns7E="
+        crossorigin="anonymous"></script>
+    <script type="text/javascript" src="/js/authentication.js"></script>
     <script type="text/javascript" src="/js/misc-utils.js"></script>
     <script type="text/javascript" src="/js/project-utils.js"></script>
     <script type="text/javascript" src="/js/project-read.js"></script>
+    <script type="text/javascript" src="/js/stopwatch.js"></script>
 </body>
 
 </html>

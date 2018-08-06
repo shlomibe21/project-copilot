@@ -1,5 +1,31 @@
 'use strict';
 
+let localAuthToken = localStorage.getItem('token');
+
+// Check if user is authenticated and display related account information
+if(localAuthToken) {
+    // User is authenticated display related account info
+    $('.top-nav').append(displayLoggedInInfo());
+}
+else {
+    // User is not authenticated display related account info
+    $('.top-nav').append(displayLoggedOutInfo());
+}
+
+// Display related information in case that user is authenticated
+function displayLoggedInInfo() {
+	return `
+		<a href="/" class="logout-link">logout</a>
+	`
+}
+
+// Display related information in case that user is not authenticated
+function displayLoggedOutInfo() {
+	return `
+    <a href="/" class="login-link">login</a>
+	`
+}
+
 $('.login-form').submit(event => {
     event.preventDefault();
     // Fetch all the the data from the form
@@ -31,13 +57,17 @@ $('.login-form').submit(event => {
     });
 });
 
+// logut a user
 function logoutClicked() {
-    $('.logout').on('click', event => {
-		event.preventDefault();
-		localStorage.setItem('token','');
+    $('.top-nav').on('click', '.logout-link', event => {
+        event.preventDefault();
+        // Clear the token
+        localStorage.setItem('token','');
+        // Move to index.html
 		window.location.href = "/";
 	});
 }
+
 function handleAuthentication() {
     logoutClicked();
 }

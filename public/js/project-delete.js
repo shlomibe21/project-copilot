@@ -6,7 +6,7 @@ if(!localAuthToken) {
 }
 
 function deleteProject() {
-    $('.delete-project-button').click(event => {
+    $('.delete-button').click(event => {
         event.preventDefault();
         // Get current url
         const url = window.location.search;
@@ -39,7 +39,12 @@ function cancelDeleteClicked() {
     });
 }
 
+function displayProjectToDelete() {
+    displayProject();
+}
+
 function handleProjectDelete() {
+    displayProjectToDelete(displayProjectInfo);
     deleteProject();
     cancelDeleteClicked();
 }

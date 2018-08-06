@@ -19,26 +19,12 @@ const projectCopilotSchema = mongoose.Schema({
     },
     tasks: [{
         created: { type: Date },
-        description: { type: String },
-        hours: { type: Number }
+        taskName: { type: String},
+        taskDueDate: { type: Date },
+        taskStartingDate: { type: Date },    
+        hours: { type: Number },
+        description: { type: String }
     }],
-});
-
-//var day=dateFormat(new Date(), "yyyy-mm-dd h:MM:ss");
-
-projectCopilotSchema.virtual('dueDateFrmt').get(function () {
-    let date = dateFormat(this.dueDate, "yyyy-mm-dd");
-    return `${date}`;
-});
-
-projectCopilotSchema.virtual('startingDateFrmt').get(function () {
-    let date = dateFormat(this.startingDate, "yyyy-mm-dd");
-    return `${date}`;
-});
-
-projectCopilotSchema.virtual('endingDateFrmt').get(function () {
-    let date = dateFormat(this.endinggDate, "yyyy-mm-dd");
-    return `${date}`;
 });
 
 projectCopilotSchema.methods.serialize = function () {
@@ -47,9 +33,9 @@ projectCopilotSchema.methods.serialize = function () {
         companyName: this.companyName,
         projectName: this.projectName,
         projectStatus: this.projectStatus,
-        dueDate: this.dueDateFrmt,
-        startingDate: this.startingDateFrmt,
-        endingDate: this.endingDateFrmt,
+        dueDate: this.dueDate,
+        startingDate: this.startingDate,
+        endingDate: this.endingDate,
         totalHours: this.totalHours,
         createdDate: this.createdDate,
         tasks: this.tasks

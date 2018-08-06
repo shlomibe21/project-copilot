@@ -1,7 +1,7 @@
 'use strict';
 
 // If user is not authenticated go to login page
-if(!localAuthToken) {
+if (!localAuthToken) {
     window.location.href = "/";
 }
 
@@ -14,8 +14,8 @@ function getProjectInfo(callbackFn, id) {
         url: "/api/projects/project-read/" + id,
         type: 'GET',
         contentType: 'application/json',
-        headers: { 
-            "Authorization": 'Bearer ' + localAuthToken 
+        headers: {
+            "Authorization": 'Bearer ' + localAuthToken
         },
         success: callbackFn,
         error: function (error) {
@@ -27,15 +27,19 @@ function getProjectInfo(callbackFn, id) {
 function displayProjectInfo(data) {
     // Display header info
     let headerInfo = projectHeaderUpdateTemplate(data)
-    $('.js-project-info').append(headerInfo);
+    $('.js-projects-info').append(headerInfo);
 
-    // Display tasks info
-    let tasksInfo = data.tasks.map((task) => projectTasksUpdateTemplate(task));
-    let tasksTemplate = `
-    <ul>${tasksInfo.join("")}</ul>
-    `;
-
-    $('.js-project-info').append(tasksTemplate);
+    if ((data.tasks) && ((data.tasks.length > 0))) {
+        // Display tasks info
+        let tasksInfo = data.tasks.map((task) => projectTasksUpdateTemplate(task));
+        let tasksTemplate = `
+        <section role="region" class="js-tasks">
+        <legend class="tasks-title">Tasks:</legend>
+        <ul>${tasksInfo.join("")}</ul>
+        </section>
+        `;
+        $('.js-projects-info').append(tasksTemplate);
+    }
 }
 
 function displayProject() {
@@ -48,53 +52,52 @@ function displayProject() {
         return;
     }
     getProjectInfo(displayProjectInfo, itemId);
+    displayTimer();
 }
 
 function addTaskClicked() {
     $('.add-task-button').click(event => {
-        let newTask = `
-        <div>
-        <label for="description">Description:</label>
-        <input type="text" name="description" class="description">
-        </div>
-        <div>
-        <label for="hours">Hours:</label>
-        <input type="text" name="hours" class="hours">
-        </div>
-        <div>
-        <button class="delete-task-button">Delete Task</button>
-        </div>
-        `;
-        console.log(newTask);
-        $('.js-project-info').append(newTask);
+        let task = {};
+        let newTask = projectTasksUpdateTemplate(task);
+        //console.log(newTask);
+        $('.js-projects-info').append(newTask);
     });
 }
 
 function buildProjectData(fields, formData) {
     let task = {};
     let tasks = [];
-    
+
     jQuery.each(fields, function (i, field) {
         //console.log(field.name);
         //console.log(field.value);
-        if (field.name == 'description') {
+        // Update task fields
+        if (field.name === 'taskName') {
+            // First field, reset the object
             task = {};
             task[field.name] = field.value;
         }
-        if (field.name == 'hours') {
+        else if (field.name === 'taskDueDate') {
+            task[field.name] = field.value;
+        }
+        else if (field.name === 'taskStartingDate') {
+            task[field.name] = field.value;
+        }
+        else if (field.name === 'hours') {
+            task[field.name] = field.value;
+        }
+        else if (field.name === 'description') {
             task[field.name] = field.value;
             tasks.push(task);
             console.log(tasks);
         }
+        // Update all other fields
         else {
             formData[field.name] = field.value;
         }
     });
 
     formData['tasks'] = tasks;
-    //task.companyName = 'blahblah';
-    //task.hours = 10;
-    
     console.log(tasks);
     return formData;
 }
@@ -105,16 +108,16 @@ $('.project-update-form').submit(event => {
     let fields = $("form").serializeArray();
     //console.log(fields);
     // Build an object with all the form's fields
-    let formData = {};    
-    formData = buildProjectData(fields, formData);    
+    let formData = {};
+    formData = buildProjectData(fields, formData);
     console.log(formData);
     $.ajax({
         url: "/api/projects/project-update/" + itemId,
         type: 'PUT',
         contentType: 'application/json',
         data: JSON.stringify(formData),
-        headers: { 
-            "Authorization": 'Bearer ' + localAuthToken 
+        headers: {
+            "Authorization": 'Bearer ' + localAuthToken
         },
         success: function (data) {
             // Upon success go back to project-list page
@@ -133,7 +136,7 @@ function cancelUpdateClicked() {
 }
 
 function deleteTaskClicked() {
-    $('.js-project-info').on('click', '.delete-task-button', event => {
+    $('.js-projects-info').on('click', '.delete-task-button', event => {
         event.stopPropagation();
         event.preventDefault();
 
@@ -144,12 +147,12 @@ function deleteTaskClicked() {
             type: 'GET',
             contentType: 'application/json',
             data: JSON.stringify({ id: itemId }),
-            headers: { 
-                "Authorization": 'Bearer ' + localAuthToken 
+            headers: {
+                "Authorization": 'Bearer ' + localAuthToken
             },
             success: function (data) {
                 // Upon success go back to project-list page
-                //window.location.href = "projects-list.html";
+                window.location.href = "projects-list.html";
             },
             error: function (error) {
                 console.log('error', error);
@@ -163,6 +166,7 @@ function handleProject() {
     addTaskClicked();
     cancelUpdateClicked();
     deleteTaskClicked();
+    datePicker();
 }
 
 $(handleProject);
