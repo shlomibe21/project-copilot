@@ -110,21 +110,21 @@ function projectHeaderUpdateTemplate(item) {
     <input type="hidden" name="id" value=${item.id}>
     <div class="row">
     <div class="col-12">
-    <label for="companyName">Company:</label>
-    <input type="text" value="${item.companyName ? item.companyName : ""}" name="companyName" id="company-name" class="company-name form-input" required>
+    <label for="companyName">*Company:</label>
+    <input type="text" value="${item.companyName ? item.companyName : ""}" name="companyName" id="company-name" class="form-input" required>
     </div>
     </div>
     <div class="row">
     <div class="col-12">
-    <label for="project-name">Project:</label>
-    <input type="text" value="${item.projectName ? item.projectName : ""}" name="projectName" id="project-name" class="project-name form-input" required>
+    <label for="projectName">*Project:</label>
+    <input type="text" value="${item.projectName ? item.projectName : ""}" name="projectName" id="project-name" class="form-input" required>
     </div>
     </div>
     <div class="row">
     <div class="col-4">
     <label for="projectStatus">Status:</label>
-    <select name="projectStatus" id="project-status" class="project-status form-input">
-    <option value=${item.projectStatus ? item.projectStatus : ""} disabled selected>${item.projectStatus ? item.projectStatus : ""}</option>
+    <select name="projectStatus" id="project-status" class="form-input">
+        <option value="" disabled selected>${item.projectStatus ? item.projectStatus : ""}</option>
         <option value="Active">Active</option>
         <option value="Completed">Completed</option>
         <option value="Pending">Pending</option>
@@ -134,21 +134,21 @@ function projectHeaderUpdateTemplate(item) {
     </div>
     <div class="col-4">
     <label for="dueDate">Due Date:</label>
-    <input type="text" value="${item.dueDate ? item.dueDate : ""}" name="dueDate" id="due-date" class="date-picker due-date form-input" autocomplete="off">
+    <input type="text" value="${item.dueDate ? item.dueDate : ""}" name="dueDate" id="due-date" class="date-picker form-input" autocomplete="off">
     </div>
     </div>
     <div class="row">
     <div class="col-4">
     <label for="startingDate">Starting Date:</label>
-    <input type="text" value="${item.startingDate ? item.startingDate : ""}" name="startingDate" id="startig-date" class="date-picker startig-date form-input" autocomplete="off">
+    <input type="text" value="${item.startingDate ? item.startingDate : ""}" name="startingDate" id="startig-date" class="date-picker form-input" autocomplete="off">
     </div>
     <div class="col-4">
     <label for="endingDate">Ending Date:</label>
-    <input type="text" value="${item.endingDate ? item.endingDate : ""}" name="endingDate" id="ending-date" class="date-picker ending-date form-input" autocomplete="off">
+    <input type="text" value="${item.endingDate ? item.endingDate : ""}" name="endingDate" id="ending-date" class="date-picker form-input" autocomplete="off">
     </div>
     <div class="col-4">
     <label for="totalHours">Total Hours:</label>
-    <input type="text" value="${item.totalHours ? item.totalHours : ""}" name="totalHours" id="total-hours" class="total-hours form-input">
+    <input type="text" value="${item.totalHours ? item.totalHours : ""}" name="totalHours" id="total-hours" class="form-input">
     </div>
     </div>
     `;
@@ -168,28 +168,28 @@ function projectTasksUpdateTemplate(task) {
     <input type="hidden" name="taskid" value=${task._id}>
     <div class="row">
     <div class="col-12">
-    <label for="taskName">Task:</label>
-    <input type="text" value="${task.taskName ? task.taskName : ""}" name="taskName" class="task-name form-input" required>
+    <label for="taskName">*Task:</label>
+    <input type="text" value="${task.taskName ? task.taskName : ""}" name="taskName" class="form-input" required>
     </div>
     </div>
     <div class="row">
     <div class="col-4">
     <label for="dueDate">Due Date:</label>
-    <input type="text" value="${task.taskDueDate ? task.taskDueDate : ""}" name="taskDueDate" class="date-picker task-due-date form-input" autocomplete="off">
+    <input type="text" value="${task.taskDueDate ? task.taskDueDate : ""}" name="taskDueDate" class="date-picker form-input" autocomplete="off">
     </div>    
     <div class="col-4">
     <label for="startingDate">Starting Date:</label>
-    <input type="text" value="${task.taskStartingDate ? task.taskStartingDate : ""}" name="taskStartingDate" class="date-picker task-starting-date form-input" autocomplete="off">
+    <input type="text" value="${task.taskStartingDate ? task.taskStartingDate : ""}" name="taskStartingDate" class="date-picker form-input" autocomplete="off">
     </div>
     <div class="col-4">
     <label for="hours">Hours:</label>
-    <input type="text" value="${task.hours ? task.hours : ""}" name="hours" class="hours form-input">
+    <input type="text" value="${task.hours ? task.hours : ""}" name="hours" class="form-input">
     </div>
     </div>
     <div class="row">
     <div class="col-12">
     <label for="description">Description:</label>
-    <textarea name="description" class="description form-input">${task.description ? task.description : ""}</textarea>
+    <textarea name="description" class="form-input">${task.description ? task.description : ""}</textarea>
     </div>
     </div>
     <div>
@@ -201,5 +201,3 @@ function projectTasksUpdateTemplate(task) {
 
     return taskTemplate;
 }
-
-/*<input type="text" value="${task.description ? task.description : ""}" name="description" class="description form-input">*/

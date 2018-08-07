@@ -140,6 +140,16 @@ function deleteTaskClicked() {
         event.stopPropagation();
         event.preventDefault();
 
+        // Remove the selected task from the page
+        $(event.currentTarget).parent().closest('li').remove();
+    });
+}
+
+function deleteTaskFromDBClicked() {
+    $('.js-task-info').on('click', '.delete-task-button', event => {
+        event.stopPropagation();
+        event.preventDefault();
+
         let taskId = $(event.currentTarget).parent().parent().find("input[name*='taskid']").val();
         //console.log(itemId);
         $.ajax({
@@ -151,7 +161,8 @@ function deleteTaskClicked() {
                 "Authorization": 'Bearer ' + localAuthToken
             },
             success: function (data) {
-                
+                // Upon success, reload the current page, without using the cache
+                window.location.reload(true);
             },
             error: function (error) {
                 console.log('error', error);
