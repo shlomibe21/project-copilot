@@ -45,6 +45,16 @@ router.get('/task-read/:id/:taskid', (req, res) => {
         });
 });
 
+// GET ID request to /task-read/:id
+router.delete('/task-delete/:id/:taskid', jwtAuth , (req, res) => {
+    ProjectsDB.findOneAndUpdate({_id: req.params.id ,  user: req.user.id},{$pull: { tasks: {_id: req.params.taskid}}})
+        .then(project => res.json(project.serialize()))
+        .catch(err => {
+            console.error(err);
+            res.status(500).json({ message: "GET TASK BY ID Error: Internal server error" });
+        });
+});
+
 // POST request, create a new project
 router.post("/project-create", jwtAuth, (req, res) => {
     console.log(req.user);

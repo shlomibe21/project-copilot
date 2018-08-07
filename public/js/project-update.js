@@ -140,19 +140,18 @@ function deleteTaskClicked() {
         event.stopPropagation();
         event.preventDefault();
 
-        let itemId = $(event.currentTarget).parent().find("input[name*='taskid']").val();
+        let taskId = $(event.currentTarget).parent().parent().find("input[name*='taskid']").val();
         //console.log(itemId);
         $.ajax({
-            url: "/api/projects/task-read" + itemId,
-            type: 'GET',
+            url: "/api/projects/task-delete/" + itemId + '/' + taskId,
+            type: 'DELETE',
             contentType: 'application/json',
             data: JSON.stringify({ id: itemId }),
             headers: {
                 "Authorization": 'Bearer ' + localAuthToken
             },
             success: function (data) {
-                // Upon success go back to project-list page
-                window.location.href = "projects-list.html";
+                
             },
             error: function (error) {
                 console.log('error', error);
