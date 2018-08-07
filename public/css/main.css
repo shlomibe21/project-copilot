@@ -86,10 +86,6 @@ footer p {
     font-size: 1.1em;
 }
 
-h1 {
-    
-}
-
 ul {
 	list-style: none;
     padding: 0;
@@ -146,6 +142,10 @@ textarea {
     margin-right: auto;  
 }
 
+.centered-container a {
+    font-size: 25px;
+}
+
 .form-input {
     width: 100%;
     height: 40px;
@@ -173,18 +173,7 @@ form label {
     margin-bottom: 20px;
     background-color: white;
     border-radius: 10px;
-    /*border: 1px solid purple;*/
-}
-
-.js-project-content {
-    height: 220px;
-    overflow-y: auto;
-    border-bottom: 2px solid purple;
-    /*border: solid 1px black;*/
-}
-
-.js-project-header {
-    height: 215px;
+    font-size: 20px;
 }
 
 .js-projects-info label {
@@ -194,7 +183,6 @@ form label {
 
 .js-projects-info p {
     display: inline-block;
-    /*color: red;*/
 }
 
 .tasks-title {
@@ -205,6 +193,9 @@ form label {
     color: purple;
 }
 
+.tasks-wrapper {
+    display: none;
+}
 .task-container {
    /*background-color: #efefef;*/
    padding-top: 20px;
@@ -215,25 +206,34 @@ form label {
 
 .js-project-frame button {
     cursor: pointer;
-    font-size: 14px;
+    background-color: white;
+    font-size: 18px;
+    border: solid 1px lightgrey;
+}
+
+.buttons-bar {
+    padding-top: 5px;
+    border-top: 2px solid purple;
 }
 
 .view-project-button {
-    margin-left: 20px;
+    margin-left: 15px;
     color: green;
-    background-color: white;
 }
 
 .edit-project-button {
     color: rgb(255, 115, 0);
-    background-color: white;
 }
 
 .delete-project-button {
     color: red;
-    background-color: white;
 }
 
+.toggle-tasks-display-button {
+    /*float: right;*/
+    margin-right: 20px;
+    color: purple;
+}
 .message {
     text-align: center;
 }
