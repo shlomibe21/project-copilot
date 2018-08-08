@@ -177,6 +177,7 @@ function handleProject() {
     cancelUpdateClicked();
     deleteTaskClicked();
     datePicker();
+    datePickerSelect();
 }
 
 $(handleProject);

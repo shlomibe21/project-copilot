@@ -53,6 +53,7 @@ function handleProject() {
     displayCreateProjectForm();
     cancelProjectClicked();
     datePicker();
+    datePickerSelect();
 }
 
 $(handleProject);

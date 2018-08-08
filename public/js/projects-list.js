@@ -80,7 +80,7 @@ function displayProjectsList() {
 function viewProjectClicked() {
     $('.js-projects-info').on('click', '.view-project-button', event => {
         event.stopPropagation();
-        let id = $(event.currentTarget).parent().parent().find("input[name*='id']").val();
+        let id = $(event.currentTarget).closest('li').find("input[name*='id']").val();
         //console.log(id);
         window.location.href = "project-read.html?id=" + id;
     });
@@ -89,7 +89,7 @@ function viewProjectClicked() {
 function editProjectClicked() {
     $('.js-projects-info').on('click', '.edit-project-button', event => {
         event.stopPropagation();
-        let id = $(event.currentTarget).parent().parent().find("input[name*='id']").val();
+        let id = $(event.currentTarget).closest('li').find("input[name*='id']").val();
         //console.log(id);
         window.location.href = "project-update.html?id=" + id;
     });
@@ -98,7 +98,7 @@ function editProjectClicked() {
 function deleteProjectClicked() {
     $('.js-projects-info').on('click', '.delete-project-button', event => {
         event.stopPropagation();
-        let id = $(event.currentTarget).parent().parent().find("input[name*='id']").val();
+        let id = $(event.currentTarget).closest('li').find("input[name*='id']").val();
         //console.log(id);
         window.location.href = "project-delete.html?id=" + id;
     });
