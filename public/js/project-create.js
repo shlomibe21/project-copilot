@@ -2,7 +2,7 @@
 
 // If user is not authenticated go to login page
 if (!localAuthToken) {
-    window.location.href = "/";
+    window.location.href = "/login.html";
 }
 
 $('.project-create-form').submit(event => {
@@ -27,8 +27,19 @@ $('.project-create-form').submit(event => {
             "Authorization": 'Bearer ' + localAuthToken
         },
         success: function (data) {
-            // Upon success go back to project-list page
-            window.location.href = "projects-list.html";
+            // Upon success go back to project-list page, in case
+            // of a problem with data just go back to projects list.
+            if(data && data.id) {
+                let id = data.id;
+                console.log(id);
+                if(id) {
+                    window.location.href = "project-read.html?id=" + id;
+                }
+            }
+            else {
+                window.location.href = "projects-list.html";
+            }
+            
         },
         error: function (error) {
             console.log('error', error);
@@ -53,6 +64,7 @@ function handleProject() {
     displayCreateProjectForm();
     cancelProjectClicked();
     datePicker();
+    datePickerSelect();
 }
 
 $(handleProject);

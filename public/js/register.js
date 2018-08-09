@@ -30,3 +30,10 @@ $('.register-form').submit(event => {
         },
     });
 });
+
+function handleRegistration() {
+    inputFocus();
+    inputBlur();
+}
+
+$(handleRegistration);

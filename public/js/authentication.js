@@ -3,7 +3,7 @@
 let localAuthToken = localStorage.getItem('token');
 
 // Check if user is authenticated and display related account information
-if(localAuthToken) {
+if (localAuthToken) {
     // User is authenticated display related account info
     $('.top-nav').append(displayLoggedInInfo());
 }
@@ -14,15 +14,16 @@ else {
 
 // Display related information in case that user is authenticated
 function displayLoggedInInfo() {
-	return `
-		<a href="/" class="logout-link">logout</a>
+    return `
+        <a href="/projects-list.html" class="top-nav-link">Projects</a>
+		<a href="/" class="logout-link top-nav-link">logout</a>
 	`
 }
 
 // Display related information in case that user is not authenticated
 function displayLoggedOutInfo() {
-	return `
-    <a href="/" class="login-link">login</a>
+    return `
+    <a href="/login.html" class="login-link top-nav-link">login</a>
 	`
 }
 
@@ -32,10 +33,10 @@ $('.login-form').submit(event => {
     let fields = $("form").serializeArray();
     //console.log(fields);
     // Build an object with all the form's fields
-    let formData = {};    
+    let formData = {};
     jQuery.each(fields, function (i, field) {
         formData[field.name] = field.value;
-    });  
+    });
     //console.log(formData);
     $.ajax({
         url: "/api/auth/login",
@@ -62,14 +63,42 @@ function logoutClicked() {
     $('.top-nav').on('click', '.logout-link', event => {
         event.preventDefault();
         // Clear the token
-        localStorage.setItem('token','');
+        localStorage.setItem('token', '');
         // Move to index.html
-		window.location.href = "/";
-	});
+        window.location.href = "/";
+    });
+}
+
+function inputFocus() {
+    $('.login-form, .register-form').on('focus', 'input', event => {
+        //alert('FOCUS');
+        $(event.currentTarget).attr('placeholder','');
+        let label = $(event.currentTarget).closest('div').find('label');
+        //label.fadeIn();
+        label.css("visibility", "visible");
+    });
+}
+
+function inputBlur() {
+    $('.login-form, .register-form').on('blur', 'input', event => {
+        //alert('FOCUS');
+        let label = $(event.currentTarget).closest('div').find('label');
+        let labelText = label.text();
+        let input = $(event.currentTarget).closest('div').find('input');
+        let inputText = input.val();
+        //alert(label.text());
+        if(inputText === '') {
+            $(event.currentTarget).attr('placeholder', labelText);
+            //label.fadeOut();
+            label.css("visibility", "hidden");
+        }
+    });
 }
 
 function handleAuthentication() {
     logoutClicked();
+    inputFocus();
+    inputBlur();
 }
 
 $(handleAuthentication);
