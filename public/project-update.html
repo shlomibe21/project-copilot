@@ -33,9 +33,14 @@
             <form role="form" class="project-update-form">
                 <div class="js-projects-info" aria-live="polite"></div>
                 <div class="centered-btn-wrapper">
-                    <button type="submit" class="btn submit-button">Submit</button>
-                    <button type="button" class="btn cancel-button">Cancel</button>
-                    <button type="button" class="btn add-task-button">Add Task</button>
+                    <div>
+                        <button type="button" class="btn add-task-button">Add New Task</button>
+                    </div>
+                    <div>
+                        <button type="submit" class="btn submit-button">Submit Changes</button>
+                        <button type="button" class="btn cancel-button">Cancel Changes</button>
+                        <button type="button" class="btn delete-button">Delete Project</button>
+                    </div>
                 </div>
             </form>
         </main>
@@ -51,7 +56,7 @@
         crossorigin="anonymous"></script>
     <script type="text/javascript" src="/js/authentication.js"></script>
     <script type="text/javascript" src="/js/misc-utils.js"></script>
-    <script type="text/javascript" src="/js/project-utils.js"></script>    
+    <script type="text/javascript" src="/js/project-utils.js"></script>
     <script type="text/javascript" src="/js/stopwatch.js"></script>
     <script type="text/javascript" src="/js/project-update.js"></script>
 </body>

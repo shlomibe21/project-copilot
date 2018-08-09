@@ -171,10 +171,17 @@ function deleteTaskFromDBClicked() {
     });
 }
 
+function deleteProjectClicked() {
+    $('.delete-button').click(event => {
+        window.location.href = "project-delete.html?id=" + itemId;
+    });
+}
+
 function handleProject() {
     displayProject();
     addTaskClicked();
     cancelUpdateClicked();
+    deleteProjectClicked();
     deleteTaskClicked();
     datePicker();
     datePickerSelect();

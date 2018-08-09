@@ -1,5 +1,10 @@
 .stopwatch-wrapper {
+    margin: 10px;
     text-align: center;
+}
+
+legend {
+    font-size: 30px;
 }
 
 .stopwatch-content {

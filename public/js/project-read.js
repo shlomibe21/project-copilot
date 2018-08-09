@@ -1,5 +1,7 @@
 'use strict';
 
+let itemId;
+
 // If user is not authenticated go to login page
 if (!localAuthToken) {
     window.location.href = "/";
@@ -49,7 +51,7 @@ function displayProject(callbackFn) {
     // Get current url
     const url = window.location.search;
     // Get the id of the selected project from the url
-    let itemId = getParamValFromUrl(url, 'id');
+    itemId = getParamValFromUrl(url, 'id');
     if (!itemId) {
         alert('Project id is missing');
         return;
@@ -63,9 +65,23 @@ function backToListClicked() {
     });
 }
 
+function editProjectClicked() {
+    $('.edit-button').click(event => {
+        window.location.href = "project-update.html?id=" + itemId;
+    });
+}
+
+function deleteProjectClicked() {
+    $('.delete-button').click(event => {
+        window.location.href = "project-delete.html?id=" + itemId;
+    });
+}
+
 function handleProject() {
     displayProject(displayProjectInfo);
-    backToListClicked()
+    backToListClicked();
+    editProjectClicked();
+    deleteProjectClicked();
 }
 
 $(handleProject);

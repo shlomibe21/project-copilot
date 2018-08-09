@@ -107,6 +107,8 @@ textarea {
 }
 
 .btn {
+    display: inline-block;
+    min-width: 180px;
     margin-top: 20px;
     margin-bottom: 20px;
     background: #012c7a;
@@ -142,7 +144,7 @@ textarea {
     margin-right: auto;  
 }
 
-.centered-container a {
+.link-selector {
     font-size: 25px;
 }
 

@@ -27,8 +27,19 @@ $('.project-create-form').submit(event => {
             "Authorization": 'Bearer ' + localAuthToken
         },
         success: function (data) {
-            // Upon success go back to project-list page
-            window.location.href = "projects-list.html";
+            // Upon success go back to project-list page, in case
+            // of a problem with data just go back to projects list.
+            if(data && data.id) {
+                let id = data.id;
+                console.log(id);
+                if(id) {
+                    window.location.href = "project-read.html?id=" + id;
+                }
+            }
+            else {
+                window.location.href = "projects-list.html";
+            }
+            
         },
         error: function (error) {
             console.log('error', error);

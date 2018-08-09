@@ -133,14 +133,12 @@ function resetTimerClicked() {
 function displayTimer() {
     let template = `
     <section role=region class=stopwatch-content>
-            <legend>Stopwatch - 
-                <span id="sw_status">Idle</span>
-            </legend>
+            <legend>Stopwatch</legend>
+            <div id="sw_status">Idle</div>
             <div class="stopwatch-time">
                 <span id="sw_h" class="sw-number">00</span>:
                 <span id="sw_m" class="sw-number">00</span>:
-                <span id="sw_s" class="sw-number">00</span>:
-                <span id="sw_ms" class="sw-number">00</span>
+                <span id="sw_s" class="sw-number">00</span>
             </div>
             <div>
                 <input type="button" value="Start" id="sw_start"/>
@@ -148,6 +146,7 @@ function displayTimer() {
                 <input type="button" value="Stop" id="sw_stop"/>
                 <input type="button" value="Reset" id="sw_reset"/>
             </div>
+            <div>Use it to track your working time!</div>
         </section>
     `;
 
