@@ -4,7 +4,7 @@ let itemId;
 
 // If user is not authenticated go to login page
 if (!localAuthToken) {
-    window.location.href = "/";
+    window.location.href = "/login.html";
 }
 
 // Get a single project
@@ -29,7 +29,12 @@ function getProjectInfo(callbackFn, id) {
 function displayProjectInfo(data) {
     // Display header info
     let headerInfo = projectHeaderReadTemplate(data)
-    $('.js-projects-info').append(headerInfo);
+    let headerTemplate = `
+    <div class="js-project-header">
+    ${headerInfo}
+    </div>
+    `;
+    $('.js-projects-info').append(headerTemplate);
 
     if ((data.tasks) && ((data.tasks.length > 0))) {
         // Display tasks info

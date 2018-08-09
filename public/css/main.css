@@ -53,10 +53,12 @@ input, select, textarea {
     top: 18px;
   }
 
-.login-link, .logout-link { 
+.top-nav-link { 
     color: white;
     font-size: 1.2em;
     text-decoration: none;
+    margin-right: 15px;
+    margin-left: 15px;
 }
 
 header {
@@ -98,12 +100,53 @@ li {
     margin: 0;
 }
 
-legend {
-    /*padding-left: 10px;*/
-}
-
 textarea {
     min-height: 120px;
+}
+
+.index-page {
+    color: blue;
+}
+
+.index-page h1 {
+    color: blue;
+}
+
+.index-page hr {
+    width: 30%;
+    border: 1px solid blue;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    text-shadow: 2px 2px 4px #000000;
+}
+
+.index-page .row {
+    text-align: center;
+}
+
+.top-image {
+    height: 300px; 
+    width: 100%;
+    background: url('../images/head-2748333_1920.jpg'); 
+    background-position: 0px -320px;
+    text-align: center;
+}
+
+.top-image .btn {
+    display: inline-block;
+    position: relative;
+    top: 45px;
+    left: 0px;
+    font-size: 25px;
+}
+
+.registration-page, .login-page {
+    background: url('../images/head-2748333_1920.jpg') no-repeat center center fixed; 
+    background-position: 0px 0px; 
+}
+
+.registration-page h1, .login-page h1 {
+    color: white;
 }
 
 .btn {
@@ -138,6 +181,10 @@ textarea {
     color: #ff0000;
 }
 
+.start-button a {
+    text-decoration: none;
+    color: white;
+}
 .centered-container {
     width: 80%;
     margin-left: auto;
@@ -156,7 +203,6 @@ textarea {
     border-radius: 4px;
     border: 0;
     outline: 0;
-    /*border-bottom: 2px solid #2079df;*/
     box-shadow: none;
     padding-left: 8px;
 }
@@ -166,6 +212,25 @@ form label {
     color: purple;
 }
 
+.register-form, .login-form {
+    background-color: rgba(255,255,255,0.9);
+    padding: 20px;
+}
+
+.register-form label, .login-form label {
+    margin-top: 20px;
+    visibility: hidden;
+    color: blue;
+}
+
+.register-form input, .login-form input {
+    height: 20px;
+    margin-bottom: 0px;
+    border-radius: 0px;
+    background-color: rgba(255,255,255,0.0);
+    border-bottom: solid 2px blue;
+}
+
 .register-form .btn, .login-form .btn {
     width: 100%;
 }
@@ -173,9 +238,21 @@ form label {
 .js-project-frame {
     margin-top: 20px;
     margin-bottom: 20px;
+    padding-top: 5px;
+    padding-bottom: 20px;
     background-color: white;
     border-radius: 10px;
     font-size: 20px;
+    border: solid 1px purple;
+    overflow-wrap: break-word;
+}
+
+.empty-page-msg {
+    min-height: 500px;
+    text-align: center;
+    font-size: 20px;
+    display: none;
+    background: url('../images/woman-1459220_1280.png') no-repeat center center fixed; 
 }
 
 .js-projects-info label {
@@ -190,7 +267,7 @@ form label {
 .tasks-title {
     margin-top: 30px;
     margin-left: 30px;
-    font-size: 30px;
+    font-size: 25px;
     font-weight: 500;
     color: purple;
 }
@@ -199,11 +276,9 @@ form label {
     display: none;
 }
 .task-container {
-   /*background-color: #efefef;*/
    padding-top: 20px;
    margin-bottom: 20px;
    border-top: solid 1px purple;
-   /*border-bottom: solid 1px blue;*/
 }
 
 .js-project-frame button {
@@ -213,9 +288,24 @@ form label {
     border: solid 1px lightgrey;
 }
 
+.js-project-content {
+    margin-bottom: 15px;
+}
+
+.js-project-header p {
+    margin-top: 0px;
+    margin-bottom: 5px;
+}
+
+.js-project-header .row:nth-of-type(1) {
+    font-size: 25px;
+    margin-top: 10px;
+    margin-bottom: 30px;
+}
+
 .buttons-bar {
-    padding-top: 5px;
-    border-top: 2px solid purple;
+    padding-bottom: 5px;
+    border-top: 3px solid purple;
 }
 
 .view-project-button {

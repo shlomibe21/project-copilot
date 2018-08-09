@@ -38,25 +38,27 @@ function projectHeaderReadTemplate(item) {
     const projectInfo = `
     <input type="hidden" name="id" value=${item.id}>
     <div class="row">
-    <div class="col-12">
+    <div class="col-6">
+    <label>Project:</label>
+    <p>${item.projectName ? item.projectName : ""}</p>
+    </div>
+    <div class="col-6">
     <label>Company:</label>
     <p>${item.companyName ? item.companyName : ""}</p>
     </div>
     </div>
     <div class="row">
-    <div class="col-12">
-    <label>Project:</label>
-    <p>${item.projectName ? item.projectName : ""}</p>
+    <div class="col-4">
+    <label>Due Date:</label>
+    <p>${item.dueDate ? item.dueDate : ""}</p>
     </div>
-    </div>
-    <div class="row">
     <div class="col-4">
     <label>Status:</label>
     <p>${item.projectStatus ? item.projectStatus : ""}</p>
     </div>
     <div class="col-4">
-    <label>Due Date:</label>
-    <p>${item.dueDate ? item.dueDate : ""}</p>
+    <label>Total Hours:</label>
+    <p>${item.totalHours ? item.totalHours : ""}</p>
     </div>
     </div>
     <div class="row">
@@ -67,10 +69,6 @@ function projectHeaderReadTemplate(item) {
     <div class="col-4">
     <label>Ending Date:</label>
     <p>${item.endingDate ? item.endingDate : ""}</p>
-    </div>
-    <div class="col-4">
-    <label>Total Hours:</label>
-    <p>${item.totalHours ? item.totalHours : ""}</p>
     </div>
     </div>
     `;
@@ -110,7 +108,9 @@ function projectTasksReadTemplate(task) {
     <div class="row">
     <div class="col-12">
     <label>Description:</label>
-    <p>${task.description ? task.description : ""}</p>
+    <div>
+    <text>${task.description ? task.description : ""}</text>
+    </div>
     </div>
     </div>
     </div>
@@ -130,17 +130,21 @@ function projectHeaderUpdateTemplate(item) {
     <input type="hidden" name="id" value=${item.id}>
     <div class="row">
     <div class="col-12">
-    <label for="companyName">*Company:</label>
-    <input type="text" value="${item.companyName ? item.companyName : ""}" name="companyName" id="company-name" class="form-input" required>
-    </div>
-    </div>
-    <div class="row">
-    <div class="col-12">
     <label for="projectName">*Project:</label>
     <input type="text" value="${item.projectName ? item.projectName : ""}" name="projectName" id="project-name" class="form-input" required>
     </div>
     </div>
     <div class="row">
+    <div class="col-12">
+    <label for="companyName">*Company:</label>
+    <input type="text" value="${item.companyName ? item.companyName : ""}" name="companyName" id="company-name" class="form-input" required>
+    </div>
+    </div>
+    <div class="row last-row">
+    <div class="col-4">
+    <label for="dueDate">Due Date:</label>
+    <input type="text" value="${item.dueDate ? item.dueDate : ""}" name="dueDate" id="due-date" class="date-picker form-input" autocomplete="off">
+    </div>
     <div class="col-4">
     <label for="projectStatus">Status:</label>
     <select name="projectStatus" id="project-status" class="form-input">
@@ -153,22 +157,18 @@ function projectHeaderUpdateTemplate(item) {
     </select>
     </div>
     <div class="col-4">
-    <label for="dueDate">Due Date:</label>
-    <input type="text" value="${item.dueDate ? item.dueDate : ""}" name="dueDate" id="due-date" class="date-picker form-input" autocomplete="off">
+    <label for="totalHours">Total Hours:</label>
+    <input type="text" value="${item.totalHours ? item.totalHours : ""}" name="totalHours" id="total-hours" class="form-input">
     </div>
     </div>
     <div class="row">
     <div class="col-4">
     <label for="startingDate">Starting Date:</label>
-    <input type="text" value="${item.startingDate ? item.startingDate : ""}" name="startingDate" id="starting-date" class="date-picker form-input" autocomplete="off">
+    <input type="text" value="${item.startingDate ? item.startingDate : ""}" name="startingDate" id="starting-date" class="date-picker form-input" placeholder="When U started working on it" autocomplete="off">
     </div>
     <div class="col-4">
     <label for="endingDate">Ending Date:</label>
-    <input type="text" value="${item.endingDate ? item.endingDate : ""}" name="endingDate" id="ending-date" class="date-picker form-input" autocomplete="off">
-    </div>
-    <div class="col-4">
-    <label for="totalHours">Total Hours:</label>
-    <input type="text" value="${item.totalHours ? item.totalHours : ""}" name="totalHours" id="total-hours" class="form-input">
+    <input type="text" value="${item.endingDate ? item.endingDate : ""}" name="endingDate" id="ending-date" class="date-picker form-input" placeholder="When U finished working on it" autocomplete="off">
     </div>
     </div>
     `;

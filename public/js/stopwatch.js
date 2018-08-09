@@ -104,6 +104,11 @@ function pasueTimerClicked() {
         let currentDate = new Date();
         let currentTime = currentDate.getTime();
 
+        // If no starting time yet do nothing here
+        if (!initTime) {
+            return;
+        }
+        
         // save elapsed time (until pause)
         pausedTime = currentTime - initTime;
 
@@ -158,7 +163,6 @@ function handleTimer() {
     stopTimerClicked();
     pasueTimerClicked();
     resetTimerClicked();
-    //displayTimer();
 }
 
 $(handleTimer);

@@ -2,7 +2,7 @@
 
 // If user is not authenticated go to login page
 if (!localAuthToken) {
-    window.location.href = "/";
+    window.location.href = "/login.html";
 }
 
 // Get projects list
@@ -66,10 +66,16 @@ function renderProject(item) {
 }
 
 function displayProjects(data) {
-    for (let listItem in data.projects) {
-        let item = data.projects[listItem];
-        let project = renderProject(item);
-        $('.js-projects-info').append(project);
+    if((data.projects) && (data.projects.length > 0)) {
+        $('.empty-page-msg').hide();
+        for (let listItem in data.projects) {
+            let item = data.projects[listItem];
+            let project = renderProject(item);
+            $('.js-projects-info').append(project);
+        }    
+    }
+    else {
+        $('.empty-page-msg').show();
     }
 }
 

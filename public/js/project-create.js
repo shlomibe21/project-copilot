@@ -2,7 +2,7 @@
 
 // If user is not authenticated go to login page
 if (!localAuthToken) {
-    window.location.href = "/";
+    window.location.href = "/login.html";
 }
 
 $('.project-create-form').submit(event => {

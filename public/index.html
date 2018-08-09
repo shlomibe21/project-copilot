@@ -2,51 +2,61 @@
 <html lang="en">
 
 <head>
-    <title>Project Copilot</title>
+    <title>ProjectCopilot</title>
     <meta charset="UTF-8">
     <!-- Responsive viewport tag, tells small screens that it's responsive -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/css?family=Philosopher:700|Roboto" rel="stylesheet">
     <link href="./css/main.css" rel="stylesheet" type="text/css" />
+    <link href="./css/float-grid.css" rel="stylesheet" type="text/css" />
 </head>
 
-<body>
+<body class="index-page">
     <div class="nav-bar">
         <p class="logo">
-            <a href="/projects-list.html">Project Copilot</a>
+            <a href="/">ProjectCopilot</a>
         </p>
         <nav role="navigation" class="top-nav">
         </nav>
     </div>
+    <div class="top-image"><a class="btn" href="/projects-list.html">Let's Start!</a></div>
     <header role="banner">
-        <h1>Welcome to Project Copilot</h1>
-        <h2 class="message">Login</h2>
-        <p>*Required fields</p>
+        <h1>Welcome to ProjectCopilot</h1>
     </header>
     <main role=main>
-        <form role="form" class="login-form centered-container narrow">
-            <div class="js-error-message"></div>
-            <div>
-                <label for="username">*Username:</label>
+        <div class="row">
+            <div class="col-12">
+                <p>ProjectCopilot is a mobile and desktop application designed to help freelancers to manage all their projects
+                    in one place.</p>
+
             </div>
-            <div>
-                <input type="text" name="username" class="form-input" placeholder="Username" required />
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <img src="../images/business-1209705_300.jpg" alt "laptop-300">
             </div>
-            <div>
-                <label for="password">*Password:</label>
+        </div>
+        <br>
+        <br>
+        <div class="row">
+            <div class="col-6">
+                <img src="../images/cloud-2104829_300.jpg" alt "cloud-300">
             </div>
-            <div>
-                <input type="password" name="password" class="form-input" placeholder="Password" required />
+            <div class="col-6">
+                <p>ProjectCopilot takes your projects all the way to the cloud (the online one of course). It is easy to keep
+                    track of your tasks from almost everywhere.</p>
+                <p>You are the pilot here, but copilot can assist you to be in control over your projects and to stay more organized.</p>
             </div>
-            <div>
-                <button type="submit" class="btn">Submit</button>
+        </div>
+        <div class="row">
+            <div class="col-6">
+                <p>When you have all your projects and tasks in one place it is easy to see the big picture and to be able to
+                    make better plans of how to move forward.</p>
             </div>
-            <div>
-                <p class="message">Not registered?
-                    <a href="/register.html">Create an account</a>
-                </p>
+            <div class="col-6">
+                <img src="../images/entrepreneur-696966_300.jpg" alt "entrepreneur-300">
             </div>
-        </form>
+        </div>
     </main>
 
     <footer role="contentinfo">
