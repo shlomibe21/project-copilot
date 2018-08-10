@@ -18,7 +18,7 @@ As a software/web developer who does a lot of consulting I was looking for a too
 ### Login Page:
 ![Login Page](https://github.com/shlomibe21/project-copilot/blob/master/public/screenshots/ProjectCopilot_login.png)
 
-### View a single Project Page:
+### Project Details Page:
 ![View a single Project](https://github.com/shlomibe21/project-copilot/blob/master/public/screenshots/ProjectCopilot_viewPage.png)
 
 ### Update Project Page:
