@@ -21,7 +21,7 @@ As a software/web developer who does a lot of consulting I was looking for a too
 ### Project Details Page:
 ![View a single Project](https://github.com/shlomibe21/project-copilot/blob/master/public/screenshots/ProjectCopilot_viewPage.png)
 
-### Update Project Page:
+### Project Update Page:
 ![Edit Project](https://github.com/shlomibe21/project-copilot/blob/master/public/screenshots/ProjectCopilot_updatePage.png)
 
 ## Technologies
