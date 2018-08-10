@@ -21,7 +21,7 @@ $('.register-form').submit(event => {
         success: function (data) {
             alert("Registration was successful!");
             // Upon success go to login page
-            window.location.href = "/";
+            window.location.href = "/login.html";
         },
         error: function (error) {
             const message = 'Error ' + error.responseJSON.location + ': ' + error.responseJSON.message;

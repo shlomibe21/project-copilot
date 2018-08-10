@@ -120,6 +120,10 @@ textarea {
     text-shadow: 2px 2px 4px #000000;
 }
 
+.index-page main {
+    font-size: 20px;
+}
+
 .index-page .row {
     text-align: center;
 }
@@ -297,9 +301,14 @@ form label {
     margin-bottom: 5px;
 }
 
-.js-project-header .row:nth-of-type(1) {
+.js-project-header .row:nth-of-type(1),
+.js-project-header .row:nth-of-type(2) {
     font-size: 25px;
     margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.js-project-header .row:nth-of-type(2) {
     margin-bottom: 30px;
 }
 

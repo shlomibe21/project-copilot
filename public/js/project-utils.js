@@ -38,11 +38,13 @@ function projectHeaderReadTemplate(item) {
     const projectInfo = `
     <input type="hidden" name="id" value=${item.id}>
     <div class="row">
-    <div class="col-6">
+    <div class="col-12">
     <label>Project:</label>
     <p>${item.projectName ? item.projectName : ""}</p>
     </div>
-    <div class="col-6">
+    </div>
+    <div class="row">
+    <div class="col-12">
     <label>Company:</label>
     <p>${item.companyName ? item.companyName : ""}</p>
     </div>
