@@ -55,7 +55,7 @@ input, select, textarea {
 
 .top-nav-link { 
     color: white;
-    font-size: 1.2em;
+    font-size: 1em;
     text-decoration: none;
     margin-right: 15px;
     margin-left: 15px;
@@ -100,6 +100,12 @@ li {
     margin: 0;
 }
 
+fieldset {
+	border: 0;
+	padding: 0;
+	margin: 0;
+}
+
 textarea {
     min-height: 120px;
 }
@@ -118,6 +124,10 @@ textarea {
     margin-top: 10px;
     margin-bottom: 10px;
     text-shadow: 2px 2px 4px #000000;
+}
+
+.index-page main {
+    font-size: 20px;
 }
 
 .index-page .row {
@@ -297,9 +307,14 @@ form label {
     margin-bottom: 5px;
 }
 
-.js-project-header .row:nth-of-type(1) {
+.js-project-header .row:nth-of-type(1),
+.js-project-header .row:nth-of-type(2) {
     font-size: 25px;
     margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.js-project-header .row:nth-of-type(2) {
     margin-bottom: 30px;
 }
 
@@ -314,11 +329,11 @@ form label {
 }
 
 .edit-project-button {
-    color: rgb(255, 115, 0);
+    color: rgb(168, 102, 26);
 }
 
 .delete-project-button {
-    color: red;
+    color: rgb(128, 0, 0);
 }
 
 .toggle-tasks-display-button {
@@ -340,7 +355,7 @@ form label {
 
 .delete-task-button {
     margin-left: 30px;
-    color: red;
+    color: purple;
 }
 
 .js-error-message {

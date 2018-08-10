@@ -9,7 +9,6 @@ let itemId;
 
 // Get a single project
 function getProjectInfo(callbackFn, id) {
-    console.log(id);
     $.ajax({
         url: "/api/projects/project-read/" + id,
         type: 'GET',
@@ -35,7 +34,7 @@ function displayProjectInfo(data) {
         let tasksTemplate = `
         <section role="region" class="js-tasks">
         <legend class="tasks-title">Tasks:</legend>
-        <ul>${tasksInfo.join("")}</ul>
+        <ul role="list">${tasksInfo.join("")}</ul>
         </section>
         `;
         $('.js-projects-info').append(tasksTemplate);
@@ -59,7 +58,6 @@ function addTaskClicked() {
     $('.add-task-button').click(event => {
         let task = {};
         let newTask = projectTasksUpdateTemplate(task);
-        //console.log(newTask);
         $('.js-projects-info').append(newTask);
     });
 }
@@ -69,8 +67,6 @@ function buildProjectData(fields, formData) {
     let tasks = [];
 
     jQuery.each(fields, function (i, field) {
-        //console.log(field.name);
-        //console.log(field.value);
         // Update task fields
         if (field.name === 'taskName') {
             // First field, reset the object
@@ -89,7 +85,6 @@ function buildProjectData(fields, formData) {
         else if (field.name === 'description') {
             task[field.name] = field.value;
             tasks.push(task);
-            console.log(tasks);
         }
         // Update all other fields
         else {
@@ -98,7 +93,6 @@ function buildProjectData(fields, formData) {
     });
 
     formData['tasks'] = tasks;
-    console.log(tasks);
     return formData;
 }
 
@@ -106,11 +100,10 @@ $('.project-update-form').submit(event => {
     event.preventDefault();
     // Fetch all the the data from the form
     let fields = $("form").serializeArray();
-    //console.log(fields);
     // Build an object with all the form's fields
     let formData = {};
     formData = buildProjectData(fields, formData);
-    console.log(formData);
+    
     $.ajax({
         url: "/api/projects/project-update/" + itemId,
         type: 'PUT',
@@ -151,7 +144,6 @@ function deleteTaskFromDBClicked() {
         event.preventDefault();
 
         let taskId = $(event.currentTarget).parent().parent().find("input[name*='taskid']").val();
-        //console.log(itemId);
         $.ajax({
             url: "/api/projects/task-delete/" + itemId + '/' + taskId,
             type: 'DELETE',

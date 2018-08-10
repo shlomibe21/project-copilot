@@ -25,22 +25,24 @@
         <form role="form" class="register-form centered-container narrow">
             <h2 class="message">Register</h2>
             <div class="js-error-message"></div>
-            <div>
-                <label for="firstName">*First name</label>
-                <input type="text" name="firstName" class="form-input" placeholder="*First name" required autocomplete="off"/>
-            </div>
-            <div>
-                <label for="lastName">*Last name</label>
-                <input type="text" name="lastName" class="form-input" placeholder="*Last name" required autocomplete="off"/>
-            </div>
-            <div>
-                <label for="username">*Username</label>
-                <input type="text" name="username" class="form-input" placeholder="*Username" required autocomplete="off"/>
-            </div>
-            <div>
-                <label for="password">*Password - Min. 10 characters</label>
-                <input type="password" name="password" class="form-input" placeholder="*Password - Min. 10 characters" required />
-            </div>
+            <fieldset>
+                <div>
+                    <label for="firstName">*First name</label>
+                    <input type="text" name="firstName" class="form-input" placeholder="*First name" required autocomplete="off" />
+                </div>
+                <div>
+                    <label for="lastName">*Last name</label>
+                    <input type="text" name="lastName" class="form-input" placeholder="*Last name" required autocomplete="off" />
+                </div>
+                <div>
+                    <label for="username">*Username</label>
+                    <input type="text" name="username" class="form-input" placeholder="*Username" required autocomplete="off" />
+                </div>
+                <div>
+                    <label for="password">*Password - Min. 10 characters</label>
+                    <input type="password" name="password" class="form-input" placeholder="*Password - Min. 10 characters" required />
+                </div>
+            </fieldset>
             <div>
                 <button type="submit" class="btn submit-button">Register</button>
             </div>

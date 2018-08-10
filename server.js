@@ -56,6 +56,10 @@ app.use('*', function (req, res) {
     res.status(404).json({ message: 'Not Found' });
 });
 
+app.use(function( req, res, next, error) {
+    res.status(500).json({ message: 'Internal server error' });
+});
+
 // closeServer needs access to a server object, but that only
 // gets created when `runServer` runs, so we declare `server` here
 // and then assign a value to it in run

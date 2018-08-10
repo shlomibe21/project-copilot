@@ -13,7 +13,6 @@ function deleteProject() {
         // Get the id of the selected project from the url
         let itemId = getParamValFromUrl(url, 'id');
 
-        console.log(itemId);
         $.ajax({
             url: "/api/projects/project-delete/" + itemId,
             type: 'DELETE',
