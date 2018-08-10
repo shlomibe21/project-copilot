@@ -9,7 +9,6 @@ if (!localAuthToken) {
 
 // Get a single project
 function getProjectInfo(callbackFn, id) {
-    console.log(id);
     $.ajax({
         url: "/api/projects/project-read/" + id,
         type: 'GET',

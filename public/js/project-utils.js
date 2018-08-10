@@ -129,6 +129,7 @@ function projectHeaderUpdateTemplate(item) {
     item.endingDate = item.endingDate ? $.datepicker.formatDate("mm/dd/yy", new Date(item.endingDate)) : "";
 
     const projectInfo = `
+    <fieldset>
     <input type="hidden" name="id" value=${item.id}>
     <div class="row">
     <div class="col-12">
@@ -173,6 +174,7 @@ function projectHeaderUpdateTemplate(item) {
     <input type="text" value="${item.endingDate ? item.endingDate : ""}" name="endingDate" id="ending-date" class="date-picker form-input" placeholder="When U finished working on it" autocomplete="off">
     </div>
     </div>
+    </fieldset>
     `;
 
     return projectInfo;

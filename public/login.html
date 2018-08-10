@@ -25,14 +25,16 @@
         <form role="form" class="login-form centered-container narrow">
             <h2 class="message">Login</h2>
             <div class="js-error-message"></div>
-            <div>
-                <label for="username">*Username</label>
-                <input type="text" name="username" class="form-input" placeholder="*Username" required autocomplete="off"/>
-            </div>
-            <div>
-                <label for="password">*Password</label>
-                <input type="password" name="password" class="form-input" placeholder="*Password" required />
-            </div>
+            <fieldset>
+                <div>
+                    <label for="username">*Username</label>
+                    <input type="text" name="username" class="form-input" placeholder="*Username" required autocomplete="off" />
+                </div>
+                <div>
+                    <label for="password">*Password</label>
+                    <input type="password" name="password" class="form-input" placeholder="*Password" required />
+                </div>
+            </fieldset>
             <div>
                 <button type="submit" class="btn">Submit</button>
             </div>

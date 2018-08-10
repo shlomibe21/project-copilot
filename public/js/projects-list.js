@@ -27,7 +27,7 @@ function renderProject(item) {
     let tasksInfo;
     let tasksTemplate = '';
     let toggleTasksDisplayBtn = '';
-    console.log(item.tasks);
+
     if ((item.tasks) && ((item.tasks.length > 0))) {
         // Build tasks template
         tasksInfo = item.tasks.map((task) => projectTasksReadTemplate(task));
@@ -42,9 +42,8 @@ function renderProject(item) {
         `;
     }
     let template = `
-    <section role="region" class="js-project-frame">
-    <legend></legend>
-    <li>
+    
+    <li class="js-project-frame">
     <div class="js-project-content">
     <div class="js-project-header">
     ${headerInfo}
@@ -60,7 +59,7 @@ function renderProject(item) {
     ${toggleTasksDisplayBtn}
     </div>
     </li>
-    </section>
+    
     `;
     return template;
 }
@@ -87,7 +86,6 @@ function viewProjectClicked() {
     $('.js-projects-info').on('click', '.view-project-button', event => {
         event.stopPropagation();
         let id = $(event.currentTarget).closest('li').find("input[name*='id']").val();
-        //console.log(id);
         window.location.href = "project-read.html?id=" + id;
     });
 }
@@ -96,7 +94,6 @@ function editProjectClicked() {
     $('.js-projects-info').on('click', '.edit-project-button', event => {
         event.stopPropagation();
         let id = $(event.currentTarget).closest('li').find("input[name*='id']").val();
-        //console.log(id);
         window.location.href = "project-update.html?id=" + id;
     });
 }
@@ -105,7 +102,6 @@ function deleteProjectClicked() {
     $('.js-projects-info').on('click', '.delete-project-button', event => {
         event.stopPropagation();
         let id = $(event.currentTarget).closest('li').find("input[name*='id']").val();
-        //console.log(id);
         window.location.href = "project-delete.html?id=" + id;
     });
 }

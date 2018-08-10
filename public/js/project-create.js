@@ -13,11 +13,9 @@ $('.project-create-form').submit(event => {
     // Build an object with all the form's fields
     let formData = {};
     jQuery.each(fields, function (i, field) {
-        //console.log(field.name);
-        //console.log(field.value);
         formData[field.name] = field.value;
     });
-    //console.log(newProject);
+    
     $.ajax({
         url: "/api/projects/project-create",
         type: 'POST',
@@ -31,7 +29,6 @@ $('.project-create-form').submit(event => {
             // of a problem with data just go back to projects list.
             if(data && data.id) {
                 let id = data.id;
-                console.log(id);
                 if(id) {
                     window.location.href = "project-read.html?id=" + id;
                 }

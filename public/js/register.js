@@ -4,15 +4,12 @@ $('.register-form').submit(event => {
     event.preventDefault();
     // Fetch all the the data from the form
     let fields = $("form").serializeArray();
-    //console.log(fields);
+
     // Build an object with all the form's fields
     let formData = {};    
     jQuery.each(fields, function (i, field) {
-        //console.log(field.name);
-        //console.log(field.value);
         formData[field.name] = field.value;
     });  
-    //console.log(formData);
     $.ajax({
         url: "/api/users/",
         type: 'POST',

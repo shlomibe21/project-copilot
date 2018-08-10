@@ -31,20 +31,19 @@ $('.login-form').submit(event => {
     event.preventDefault();
     // Fetch all the the data from the form
     let fields = $("form").serializeArray();
-    //console.log(fields);
+    
     // Build an object with all the form's fields
     let formData = {};
     jQuery.each(fields, function (i, field) {
         formData[field.name] = field.value;
     });
-    //console.log(formData);
+    
     $.ajax({
         url: "/api/auth/login",
         type: 'POST',
         contentType: 'application/json',
         data: JSON.stringify(formData),
         success: function (jwt) {
-            console.log(jwt.authToken);
             // Store authToken on client side
             localStorage.setItem('token', jwt.authToken);
             // Upon success go to projects list page
@@ -71,22 +70,18 @@ function logoutClicked() {
 
 function inputFocus() {
     $('.login-form, .register-form').on('focus', 'input', event => {
-        //alert('FOCUS');
         $(event.currentTarget).attr('placeholder','');
         let label = $(event.currentTarget).closest('div').find('label');
-        //label.fadeIn();
         label.css("visibility", "visible");
     });
 }
 
 function inputBlur() {
     $('.login-form, .register-form').on('blur', 'input', event => {
-        //alert('FOCUS');
         let label = $(event.currentTarget).closest('div').find('label');
         let labelText = label.text();
         let input = $(event.currentTarget).closest('div').find('input');
         let inputText = input.val();
-        //alert(label.text());
         if(inputText === '') {
             $(event.currentTarget).attr('placeholder', labelText);
             //label.fadeOut();
