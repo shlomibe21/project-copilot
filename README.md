@@ -13,19 +13,16 @@ As a software/web developer who does a lot of consulting I was looking for a too
 ## App Screeshots
 
 ### Welocme Page:
-![Welocme Page]()
+![Welocme Page](https://github.com/shlomibe21/project-copilot/blob/master/public/screenshots/ProjectCopilot_index.png)
 
 ### Login Page:
-![Login Page]()
-
-### Projects List:
-![Projects List]()
+![Login Page](https://github.com/shlomibe21/project-copilot/blob/master/public/screenshots/ProjectCopilot_login.png)
 
 ### Edit Project:
-![Edit Project]()
+![Edit Project](https://github.com/shlomibe21/project-copilot/blob/master/public/screenshots/ProjectCopilot_updatePage.png)
 
 ### View a single Project:
-![View a single Project]()
+![View a single Project](https://github.com/shlomibe21/project-copilot/blob/master/public/screenshots/ProjectCopilot_viewPage.png)
 
 ## Technologies
 
