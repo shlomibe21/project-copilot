@@ -8,7 +8,12 @@ Users can add projects and tasks with starting, ending and due dates, status, nu
 As a software/web developer who does a lot of consulting I was looking for a tool to help to track all my projects in one place and to help me to stay organized. Although there are some online tools out there to help with this task they are mostly generic and therefore I have decided to implement something by myself that will fit better to this niche.
 
 ## Live Demo
-- [Live Demo](https://project-copilot.herokuapp.com/)
+- [ProjectCopilot Live Demo](https://project-copilot.herokuapp.com/)
+
+## Test Demo
+To run an existing demo, use the following login credentials:
+User: demo
+Password: tryItNow123
 
 ## App Screeshots
 
