@@ -12,8 +12,8 @@ As a software/web developer who does a lot of consulting I was looking for a too
 
 ## Test Demo
 To run an existing demo, use the following login credentials:
-User: demo
-Password: tryItNow123
+- User: demo
+- Password: tryItNow123
 
 ## App Screeshots
 
