@@ -1,8 +1,8 @@
 # ProjectCopilot
 
 ## Description
-ProjectCopilot is a mobile and desktop application designed to help freelancers to manage all their projects in one place.
-Users can add projects and tasks with starting, ending and due dates, status, number of houres and more usefule infomation to help them stay productive and to plan their work.
+ProjectCopilot is a mobile and desktop application designed to help freelancers manage all their projects in one place.
+Users can add projects and tasks with starting, ending and due dates, status, number of houres and some other useful information which helps them with planning their work and being more productive.
 
 ## Motivation
 As a software/web developer who does a lot of consulting I was looking for a tool to help to track all my projects in one place and to help me to stay organized. Although there are some online tools out there to help with this task they are mostly generic and therefore I have decided to implement something by myself that will fit better to this niche.
