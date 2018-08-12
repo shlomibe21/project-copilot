@@ -172,11 +172,11 @@ function projectHeaderUpdateTemplate(item) {
     <div class="row">
     <div class="col-4">
     <label for="startingDate">Starting Date:</label>
-    <input type="text" value="${startingDate ? startingDate : ""}" name="startingDate" id="starting-date" class="date-picker form-input" placeholder="When U started working on it" autocomplete="off">
+    <input type="text" value="${startingDate ? startingDate : ""}" name="startingDate" id="starting-date" class="date-picker form-input" placeholder="When you started working on it" autocomplete="off">
     </div>
     <div class="col-4">
     <label for="endingDate">Ending Date:</label>
-    <input type="text" value="${endingDate ? endingDate : ""}" name="endingDate" id="ending-date" class="date-picker form-input" placeholder="When U finished working on it" autocomplete="off">
+    <input type="text" value="${endingDate ? endingDate : ""}" name="endingDate" id="ending-date" class="date-picker form-input" placeholder="When you finished working on it" autocomplete="off">
     </div>
     </div>
     </fieldset>
