@@ -1,5 +1,10 @@
 'use strict';
 
+function getUTCDateUSShort(date) {
+    let utcDate = date.getUTCMonth() +1 + '/' + date.getUTCDate() +'/'+ date.getUTCFullYear();
+    return utcDate;
+}
+
 function datePicker() {
     $('.js-projects-info').on('focus', '.date-picker', event => {
         $(".date-picker").datepicker({
@@ -31,10 +36,10 @@ function datePickerSelect() {
 // Build a read template for the header of the current project
 function projectHeaderReadTemplate(item) {
     // Format dates before displaying them
-    item.dueDate = item.dueDate ? $.datepicker.formatDate("mm/dd/yy", new Date(item.dueDate)) : "";
-    item.startingDate = item.startingDate ? $.datepicker.formatDate("mm/dd/yy", new Date(item.startingDate)) : "";
-    item.endingDate = item.endingDate ? $.datepicker.formatDate("mm/dd/yy", new Date(item.endingDate)) : "";
-
+    let dueDate = item.dueDate ? getUTCDateUSShort(new Date(item.dueDate)) : "";
+    let startingDate = item.startingDate ? getUTCDateUSShort(new Date(item.startingDate)) : "";
+    let endingDate = item.endingDate ? getUTCDateUSShort(new Date(item.endingDate)) : "";
+    
     const projectInfo = `
     <input type="hidden" name="id" value=${item.id}>
     <div class="row">
@@ -52,7 +57,7 @@ function projectHeaderReadTemplate(item) {
     <div class="row">
     <div class="col-4">
     <label>Due Date:</label>
-    <p>${item.dueDate ? item.dueDate : ""}</p>
+    <p>${dueDate ? dueDate : ""}</p>
     </div>
     <div class="col-4">
     <label>Status:</label>
@@ -66,11 +71,11 @@ function projectHeaderReadTemplate(item) {
     <div class="row">
     <div class="col-4">
     <label>Starting Date:</label>
-    <p>${item.startingDate ? item.startingDate : ""}</p>
+    <p>${startingDate ? startingDate : ""}</p>
     </div>
     <div class="col-4">
     <label>Ending Date:</label>
-    <p>${item.endingDate ? item.endingDate : ""}</p>
+    <p>${endingDate ? endingDate : ""}</p>
     </div>
     </div>
     `;
@@ -124,9 +129,9 @@ function projectTasksReadTemplate(task) {
 // Build an editable template for the header of the current project
 function projectHeaderUpdateTemplate(item) {
     // Format dates before displaying them
-    item.dueDate = item.dueDate ? $.datepicker.formatDate("mm/dd/yy", new Date(item.dueDate)) : "";
-    item.startingDate = item.startingDate ? $.datepicker.formatDate("mm/dd/yy", new Date(item.startingDate)) : "";
-    item.endingDate = item.endingDate ? $.datepicker.formatDate("mm/dd/yy", new Date(item.endingDate)) : "";
+    let dueDate = item.dueDate ? getUTCDateUSShort(new Date(item.dueDate)) : "";
+    let startingDate = item.startingDate ? getUTCDateUSShort(new Date(item.startingDate)) : "";
+    let endingDate = item.endingDate ? getUTCDateUSShort(new Date(item.endingDate)) : "";
 
     const projectInfo = `
     <fieldset>
@@ -146,7 +151,7 @@ function projectHeaderUpdateTemplate(item) {
     <div class="row last-row">
     <div class="col-4">
     <label for="dueDate">Due Date:</label>
-    <input type="text" value="${item.dueDate ? item.dueDate : ""}" name="dueDate" id="due-date" class="date-picker form-input" autocomplete="off">
+    <input type="text" value="${dueDate ? dueDate : ""}" name="dueDate" id="due-date" class="date-picker form-input" autocomplete="off">
     </div>
     <div class="col-4">
     <label for="projectStatus">Status:</label>
@@ -167,11 +172,11 @@ function projectHeaderUpdateTemplate(item) {
     <div class="row">
     <div class="col-4">
     <label for="startingDate">Starting Date:</label>
-    <input type="text" value="${item.startingDate ? item.startingDate : ""}" name="startingDate" id="starting-date" class="date-picker form-input" placeholder="When U started working on it" autocomplete="off">
+    <input type="text" value="${startingDate ? startingDate : ""}" name="startingDate" id="starting-date" class="date-picker form-input" placeholder="When U started working on it" autocomplete="off">
     </div>
     <div class="col-4">
     <label for="endingDate">Ending Date:</label>
-    <input type="text" value="${item.endingDate ? item.endingDate : ""}" name="endingDate" id="ending-date" class="date-picker form-input" placeholder="When U finished working on it" autocomplete="off">
+    <input type="text" value="${endingDate ? endingDate : ""}" name="endingDate" id="ending-date" class="date-picker form-input" placeholder="When U finished working on it" autocomplete="off">
     </div>
     </div>
     </fieldset>
