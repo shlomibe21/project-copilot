@@ -16,14 +16,14 @@ else {
 function displayLoggedInInfo() {
     return `
         <a href="/projects-list.html" class="top-nav-link">Projects</a>
-		<a href="/" class="logout-link top-nav-link">logout</a>
+		<a href="/" class="logout-link top-nav-link">Logout</a>
 	`
 }
 
 // Display related information in case that user is not authenticated
 function displayLoggedOutInfo() {
     return `
-    <a href="/login.html" class="login-link top-nav-link">login</a>
+    <a href="/login.html" class="login-link top-nav-link">Login</a>
 	`
 }
 

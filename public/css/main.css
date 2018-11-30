@@ -317,6 +317,7 @@ form label {
 }
 
 .buttons-bar {
+    padding-top: 20px;
     padding-bottom: 5px;
     border-top: 3px solid purple;
 }
